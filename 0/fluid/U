@@ -17,7 +17,7 @@ FoamFile
 
 dimensions      [ 0 1 -1 0 0 0 0 ];
 
-internalField   uniform (0 0 5.6);
+internalField   uniform (0 0 10.0);
 
 boundaryField
 {
@@ -25,7 +25,7 @@ boundaryField
     inlet_fluid
     {
         type            fixedValue;
-        value           uniform (0 0 5.6);
+        value            $internalField;
     }
     walls_fluid
     {
