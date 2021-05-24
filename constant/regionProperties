@@ -17,8 +17,8 @@ FoamFile
 
 regions
 (
-    fluid       (fluid)
-    solid       (heater fins)
+    fluid       (water air)
+    solid       (core ring)
 );
 
 // ************************************************************************* //
