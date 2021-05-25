@@ -17,35 +17,31 @@ FoamFile
 
 thermoType
 {
-    type            heSolidThermo;
+    type            heRhoThermo;
     mixture         pureMixture;
-    transport       constIso;
-    thermo          eConst;
-    equationOfState rhoConst;
+    transport       const;
+    thermo          hConst;
+    equationOfState perfectGas;
     specie          specie;
-    energy          sensibleInternalEnergy;
+    energy          sensibleEnthalpy;
 }
 
 mixture
 {
-    // Heater
-
     specie
     {
-        molWeight       50;
-    }
-    equationOfState
-    {
-        rho             1.28;
+        nMoles      1;
+        molWeight   28.9;       // [g/mol]
     }
     thermodynamics
     {
-        Hf              0;
-        Cv              1004;
+        Cp          1005;       // [J/kg/K]
+        Hf          0;
     }
     transport
     {
-        kappa           80;
+        mu          1.8e-05;    // [kg/m/s]
+        Pr          0.7;
     }
 }
 

@@ -10,43 +10,30 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "constant/ring";
-    object      thermophysicalProperties;
+    location    "constant/core";
+    object      fvOptions;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-thermoType
+options
 {
-    type            heSolidThermo;
-    mixture         pureMixture;
-    transport       constIso;
-    thermo          eConst;
-    equationOfState rhoConst;
-    specie          specie;
-    energy          sensibleInternalEnergy;
-}
+    energySource
+    {
+        type            semiImplicitSource;
 
-mixture
-{
-    // Aluminium
+        timeStart       0;
+        duration        1e6;
+        selectionMode   all;
+        volumeMode      specific;
 
-    specie
-    {
-        molWeight       27;
-    }
-    equationOfState
-    {
-        rho             2700;
-    }
-    transport
-    {
-        kappa           200;
-    }
-    thermodynamics
-    {
-        Hf              0;
-        Cv              900;
+        sources
+        {
+            e
+            {
+                explicit    1e7; // W/m^3 == kg/m/s^3
+                implicit    0;
+            }
+        }
     }
 }
-
 // ************************************************************************* //

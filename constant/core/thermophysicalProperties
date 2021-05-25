@@ -28,7 +28,7 @@ thermoType
 
 mixture
 {
-    // Heater
+    // Iron
 
     specie
     {
@@ -36,16 +36,16 @@ mixture
     }
     equationOfState
     {
-        rho             1.28;
-    }
-    thermodynamics
-    {
-        Hf              0;
-        Cv              1004;
+        rho             8000;
     }
     transport
     {
         kappa           80;
+    }
+    thermodynamics
+    {
+        Hf              0;
+        Cv              450;
     }
 }
 
