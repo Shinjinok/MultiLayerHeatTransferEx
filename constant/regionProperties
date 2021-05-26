@@ -18,7 +18,7 @@ FoamFile
 regions
 (
     fluid       (water air)
-    solid       (core ring)
+    solid       (core ring )
 );
 
 // ************************************************************************* //

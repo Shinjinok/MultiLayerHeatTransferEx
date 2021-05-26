@@ -30,8 +30,7 @@ boundaryField
     }
     wall_water
     {
-        type    fixedValue;
-        value    $internalField;
+        type            zeroGradient;
     }
     outlet
     {

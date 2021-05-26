@@ -10,45 +10,36 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system/air";
-    object      fvSchemes;
+    location    "system";
+    object      decomposeParDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-ddtSchemes
+numberOfSubdomains 8;
+
+method          scotch;
+
+simpleCoeffs
 {
-    default         Euler;
+    n               (4 1 2);
+    delta           0.001;
 }
 
-gradSchemes
+hierarchicalCoeffs
 {
-    default         Gauss linear;
+    n               (1 1 1);
+    delta           0.001;
+    order           xyz;
 }
 
-divSchemes
+manualCoeffs
 {
-    default         none;
-
-    div(phi,U)      Gauss upwind;
-    div(phi,K)      Gauss linear;
-    div(phi,h)      Gauss upwind;
-    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+    dataFile        "";
 }
 
-laplacianSchemes
-{
-    default         Gauss linear corrected;
-}
+distributed     no;
 
-interpolationSchemes
-{
-    default         linear;
-}
-
-snGradSchemes
-{
-    default         corrected;
-}
+roots           ( );
 
 
 // ************************************************************************* //

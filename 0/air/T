@@ -17,7 +17,7 @@ FoamFile
 
 dimensions      [ 0 0 0 1 0 0 0 ];
 
-internalField   uniform 296.9;
+internalField   uniform 300;
 
 boundaryField
 {
@@ -26,13 +26,14 @@ boundaryField
     {
         type            zeroGradient;
     }
-    air_to_core
+    
+    air_to_ring
     {
         type            compressible::turbulentTemperatureCoupledBaffleMixed;
         value           $internalField;
         Tnbr            T;
     }
-    air_to_ring
+    air_to_core
     {
         type            compressible::turbulentTemperatureCoupledBaffleMixed;
         value           $internalField;

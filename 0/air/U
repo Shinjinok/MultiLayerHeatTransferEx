@@ -17,23 +17,22 @@ FoamFile
 
 dimensions      [ 0 1 -1 0 0 0 0 ];
 
-internalField   uniform (0 0 10.0);
+internalField   uniform (1e-3 0 0);
 
 boundaryField
 {
 
-  
+   
     wall_air
     {
-        type    zeroGradient;
-   
+        type    noSlip;
     }
-   
-    air_to_core
+
+    air_to_ring
     {
         type            noSlip;
     }
-    air_to_ring
+    air_to_core
     {
         type            noSlip;
     }
