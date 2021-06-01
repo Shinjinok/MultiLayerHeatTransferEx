@@ -17,8 +17,8 @@ FoamFile
 
 regions
 (
-    fluid       (water air)
-    solid       (core ring )
+    fluid       (fluid)
+    solid       (fluid_inside rotor coil stator case)
 );
 
 // ************************************************************************* //
