@@ -28,24 +28,24 @@ thermoType
 
 mixture
 {
-    // Iron
+    // copper
 
     specie
     {
-        molWeight       50;
+        molWeight       63.546;// g/mol
     }
     equationOfState
     {
-        rho             8000;
+        rho             8960;//kg/m3
     }
     transport
     {
-        kappa           80;
+        kappa           401;
     }
     thermodynamics
     {
         Hf              0;
-        Cv              450;
+        Cv              390;
     }
 }
 

@@ -36,16 +36,16 @@ mixture
     }
     equationOfState
     {
-        rho             2700;
+        rho             2712;
     }
     transport
     {
-        kappa           200;
+        kappa           205;
     }
     thermodynamics
     {
         Hf              0;
-        Cv              900;
+        Cv              910;
     }
 }
 

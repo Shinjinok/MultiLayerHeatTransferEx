@@ -32,20 +32,20 @@ mixture
 
     specie
     {
-        molWeight       50;
+        molWeight       55.85;
     }
     equationOfState
     {
-        rho             8000;
+        rho             7740;
     }
     transport
     {
-        kappa           80;
+        kappa          45;
     }
     thermodynamics
     {
         Hf              0;
-        Cv              450;
+        Cv              490;
     }
 }
 
