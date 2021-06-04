@@ -1,0 +1,31 @@
+STEP으로 Solid Edge 변환
+날짜: 금요일,6월 04,2021 12:20오후
+출력 파일: G:\GitHubDeskTop\MultiLayerHeatTransferEx\salomeFile\단상모터지퓨텍2.stp
+작성자: Unknown
+조직: Unknown
+원본 시스템: Solid Edge
+
+하드웨어:
+프로세서: Intel(R) Core(TM) i7-7820X CPU @ 3.60GHz
+운영 체제: Windows 10 Professional
+설치된 메모리: 15.70 GB
+
+소프트웨어 정보
+Parasolid 버전: 33.0.247
+PSBodyShop 버전: 33.0.93
+단계 어댑터 버전: 5.0.107
+Solid Edge 버전: 221.00.04.003 x64
+
+STEP 내보내기 옵션
+내보내기 형식: AP214
+컨스트럭션 시트 내보내기: 꺼짐
+컨스트럭션 솔리드 내보내기: 꺼짐
+컨스트럭션 와이어 내보내기: 꺼짐
+표시된 파트만 내보내기: 꺼짐
+단위 내보내기: Millimeters
+파트 컴포넌트 이름을 유니코드로 내보내기: 꺼짐
+PMI 내보내기: 꺼짐
+
+1/1단계 Parasolid를 외부 데이터 유형으로 변환하는 중...
+변환 작업을 완료했습니다.
+변환에 필요한 시간:00 : 00 : 01
