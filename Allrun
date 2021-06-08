@@ -11,10 +11,10 @@ rm -rf constant/polyMesh/sets
 ideasUnvToFoam ./salomeFile/motor_gft.unv
 transformPoints -scale "(1e-3 1e-3 1e-3)"
 runApplication splitMeshRegions -cellZones -overwrite
-#runApplication chechMesh
-runApplication decomposePar -allRegions
-runParallel $(getApplication)
+
+#runApplication decomposePar -allRegions
+#runParallel $(getApplication)
 #runApplication $(getApplication)
-runApplication reconstructPar -allRegions
+#runApplication reconstructPar -allRegions
 #paraFoam -touchAll
 touch a.foam
