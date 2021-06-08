@@ -8,9 +8,10 @@ rm -rf constant/polyMesh/sets
 
 #runApplication blockMesh
 #runApplication snappyHexMesh -overwrite
-ideasUnvToFoam ./salomeFile/motor_simple3.unv
+ideasUnvToFoam ./salomeFile/motor_gft.unv
 transformPoints -scale "(1e-3 1e-3 1e-3)"
 runApplication splitMeshRegions -cellZones -overwrite
+#runApplication chechMesh
 runApplication decomposePar -allRegions
 runParallel $(getApplication)
 #runApplication $(getApplication)
