@@ -17,24 +17,28 @@ FoamFile
 
 dimensions      [ 0 1 -1 0 0 0 0 ];
 
-internalField   uniform (0 10 0);
+internalField   uniform (0 0 0);
 
 boundaryField
 {
 
     outlet_fluid
     {
-        type            pressureInletOutletVelocity;
-        value           $internalField;
+        //type            pressureInletOutletVelocity;
+       // value           $internalField;
+       type            zeroGradient;
     }
     inlet_fluid
     {
-        type            fixedValue;
-        value           $internalField;
+      //  type            fixedValue;
+      //  value           $internalField;
+        type            surfaceNormalFixedValue;
+        refValue        uniform 10; // [m/s]
+
     }
     wall_fluid
     {
-         type    noSlip;
+         type    slip;
     }
     fluid_to_case
     {
