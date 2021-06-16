@@ -21,29 +21,17 @@ internalField   uniform 300;
 
 boundaryField
 {
-    fluid_inside_to_coil
-    {
-        type            compressible::turbulentTemperatureCoupledBaffleMixed;
-        value           $internalField;
-        Tnbr            T;
-    }
-    fluid_inside_to_rotor
-    {
-        type            compressible::turbulentTemperatureCoupledBaffleMixed;
-        value           $internalField;
-        Tnbr            T;
-    }
-    fluid_inside_to_case
-    {
-        type            compressible::turbulentTemperatureCoupledBaffleMixed;
-        value           $internalField;
-        Tnbr            T;
-    }
-    fluid_inside_to_stator
+    ".*"
     {
         type            compressible::turbulentTemperatureCoupledBaffleMixed;
         value           $internalField;
         Tnbr            T;
     }
 
+    "wedge.*"
+    {
+        type            fixedValue;
+        value           $internalField;
+    }      
+    
 }

@@ -36,18 +36,17 @@ boundaryField
     {
         type            zeroGradient;
     }
-    fluid_to_case
+    "fluid_to.*"
     {
         type            compressible::turbulentTemperatureCoupledBaffleMixed;
         value           $internalField;
         Tnbr            T;
     }
-    fluid_to_rotor
+    
+    "wedge.*"
     {
-        type            compressible::turbulentTemperatureCoupledBaffleMixed;
+        type            fixedValue;
         value           $internalField;
-        Tnbr            T;
     }
-
-    }
+    
 }

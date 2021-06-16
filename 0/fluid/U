@@ -28,27 +28,31 @@ boundaryField
        // value           $internalField;
        type            zeroGradient;
     }
+    
     inlet_fluid
     {
-      //  type            fixedValue;
-      //  value           $internalField;
-        type            surfaceNormalFixedValue;
-        refValue        uniform 10; // [m/s]
+        type            fixedValue;
+        value           $internalField;
+      //  type            surfaceNormalFixedValue;
+      //  refValue        uniform 10; // [m/s]
 
     }
+
     wall_fluid
     {
          type    slip;
     }
-    fluid_to_case
+
+    "fluid_to.*"
     {
         type    noSlip;
     }
-    fluid_to_rotor
+    
+    "wedge.*"
     {
-         type    noSlip;
+        type            slip;
     }
-
+    
 
 }
 

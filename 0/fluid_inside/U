@@ -22,22 +22,16 @@ internalField   uniform (0 0 0);
 boundaryField
 {
 
-   fluid_inside_to_coil
+    ".*"
     {
         type            noSlip;
     }
-    fluid_inside_to_rotor
+    
+    "wedge.*"
     {
-        type            noSlip;
-    }
-    fluid_inside_to_case
-    {
-        type            noSlip;
-    }
-    fluid_inside_to_stator
-    {
-        type            noSlip;
-    }
+         type            slip;
+    }  
+    
 }
 
 // ************************************************************************* //

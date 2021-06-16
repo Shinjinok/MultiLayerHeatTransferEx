@@ -17,24 +17,23 @@ FoamFile
 
 dimensions      [ 0 0 0 1 0 0 0 ];
 
-internalField   uniform 300;
+internalField   uniform 400;
 
 boundaryField
 {
-    coil_to_stator
+    ".*"
     {
        type            compressible::turbulentTemperatureCoupledBaffleMixed;
         value           $internalField;
         Tnbr            T;
     }
-    coil_to_fluid_inside
-    {
-        type            compressible::turbulentTemperatureCoupledBaffleMixed;
-        value           $internalField;
-        Tnbr            T;
-    }
-
     
+    "wedge.*"
+    {
+        
+        type            fixedValue;
+        value           $internalField;
+    }
 }
 
 // ************************************************************************* //

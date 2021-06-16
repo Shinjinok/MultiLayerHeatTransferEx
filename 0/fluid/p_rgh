@@ -27,12 +27,12 @@ boundaryField
         type            fixedFluxPressure;
         value           $internalField;
     }
+    
     outlet_fluid
     {
-        type            fixedValue;
+       type            fixedValue;
         value           $internalField;
     }
-    
 }
 
 // ************************************************************************* //
