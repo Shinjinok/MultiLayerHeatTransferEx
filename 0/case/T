@@ -29,10 +29,8 @@ boundaryField
     }
     "wedge.*"
     {
-       type            cyclic;
-     //  value           $internalField;
+     type            zeroGradient;
     }
-    
        
 }
 

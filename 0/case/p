@@ -27,11 +27,7 @@ boundaryField
         type            calculated;
         value           $internalField;
     }
-    "wedge.*"
-    {
-       type            cyclic;
-       //value           $internalField;
-    }
+   
 
 }
 

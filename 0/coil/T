@@ -17,7 +17,7 @@ FoamFile
 
 dimensions      [ 0 0 0 1 0 0 0 ];
 
-internalField   uniform 400;
+internalField   uniform 300;
 
 boundaryField
 {
@@ -30,9 +30,7 @@ boundaryField
     
     "wedge.*"
     {
-        
-        type            fixedValue;
-        value           $internalField;
+     type            zeroGradient;
     }
 }
 

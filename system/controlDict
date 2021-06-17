@@ -23,13 +23,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         1;
+endTime         50;
 
 deltaT          1e-3;
 
 writeControl    adjustableRunTime;
 
-writeInterval   0.1;
+writeInterval   1;
 
 purgeWrite      0;
 
@@ -52,3 +52,26 @@ maxCo           1.0;
 adjustTimeStep  yes;
 
 // ************************************************************************* //
+
+
+functions
+{
+    probes
+    {
+        type        probes;
+        name        probes;
+        functionObjectLibs  ("libsampling.so");
+        writeControl timeStep;
+        writeInterval 1;
+        region coil;
+        probeLocations
+        (
+          (0 -27e-3 35e-3)
+        );
+
+        fields
+        (
+              T
+        );
+    }
+}

@@ -18,4 +18,5 @@ runParallel $(getApplication)
 runApplication reconstructPar -allRegions
 #paraFoam -touchAll
 touch a.foam
+cp postProcessing/. plot/.
 #mpirun -np 8 chtMultiRegionFoam -parallel -fileHandler uncollated

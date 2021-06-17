@@ -29,9 +29,8 @@ boundaryField
     }
     "wedge.*"
     {
-        type            fixedValue;
-        value           $internalField;
-    }  
+     type            zeroGradient;
+    } 
 
 }
 
