@@ -8,15 +8,15 @@ rm -rf constant/polyMesh/sets
 
 #runApplication blockMesh
 #runApplication snappyHexMesh -overwrite
-ideasUnvToFoam ./salomeFile/motor_wedge.unv
+ideasUnvToFoam ./salomeFile/motor_gft2.unv
 transformPoints -scale "(1e-3 1e-3 1e-3)"
 runApplication splitMeshRegions -cellZones -overwrite
 
 runApplication decomposePar -allRegions
-runParallel $(getApplication)
+mpirun -np 8 chtMultiRegionFoam -parallel > log &
+#runParallel $(getApplication)
 #runApplication $(getApplication)
 runApplication reconstructPar -allRegions
 #paraFoam -touchAll
 touch a.foam
-cp postProcessing/. plot/.
-#mpirun -np 8 chtMultiRegionFoam -parallel -fileHandler uncollated
+
