@@ -13,8 +13,8 @@ transformPoints -scale "(1e-3 1e-3 1e-3)"
 runApplication splitMeshRegions -cellZones -overwrite
 
 runApplication decomposePar -allRegions
-mpirun -np 8 chtMultiRegionFoam -parallel > log &
-#runParallel $(getApplication)
+#mpirun --use-hwthread-cpus chtMultiRegionFoam -parallel > log.$(getApplication) &
+runParallel $(getApplication)
 #runApplication $(getApplication)
 runApplication reconstructPar -allRegions
 #paraFoam -touchAll
