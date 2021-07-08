@@ -1,0 +1,807 @@
+#!/usr/bin/env python
+
+###
+### This file is generated automatically by SALOME v9.6.0 with dump python functionality
+###
+
+import sys
+import salome
+
+salome.salome_init()
+import salome_notebook
+notebook = salome_notebook.NoteBook()
+sys.path.insert(0, r'C:/GitHubDeskTop/MultiLayerHeatTransferEx/salomeFile')
+
+###
+### SHAPER component
+###
+
+###
+### SHAPERSTUDY component
+###
+
+model.publishToShaperStudy()
+import SHAPERSTUDY
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# Fuse_1_1, = SHAPERSTUDY.shape("dead01_8:1026")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# Revolution_1_1, = SHAPERSTUDY.shape("dead02_8:127")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# Pipe_1_1, = SHAPERSTUDY.shape("dead03_8:1584")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# AngularCopy_1_1, = SHAPERSTUDY.shape("dead04_8:1585")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# Rotation_1_1, = SHAPERSTUDY.shape("dead05_8:1587")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# AngularCopy_3_1, = SHAPERSTUDY.shape("dead06_8:1932")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# AngularCopy_4_1, = SHAPERSTUDY.shape("dead07_8:2072")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# Revolution_1_1_1, = SHAPERSTUDY.shape("dead08_8:127")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# Rotation_1_1_1, = SHAPERSTUDY.shape("dead09_8:1587")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# AngularCopy_3_1_1, = SHAPERSTUDY.shape("dead010_8:1932")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# AngularCopy_4_1_1, = SHAPERSTUDY.shape("dead011_8:2072")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# AngularCopy_6_1, = SHAPERSTUDY.shape("dead012_8:2101")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# motor, = SHAPERSTUDY.shape("dead013_8:2102")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# Extrusion_4_1, = SHAPERSTUDY.shape("dead014_8:2171")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# motor_gfutech, = SHAPERSTUDY.shape("dead015_8:2172")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# motor_gfutech_1, = SHAPERSTUDY.shape("dead016_8:2172")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# stator, = SHAPERSTUDY.shape("dead017_9:269")
+# This shape does not exist among the SHAPER results; if it is referenced by SMESH, this may cause an error
+# Revolution_1_1_2, = SHAPERSTUDY.shape("dead018_10:58")
+###
+### GEOM component
+###
+
+import GEOM
+from salome.geom import geomBuilder
+import math
+import SALOMEDS
+
+
+geompy = geomBuilder.New()
+
+(imported, geomObj_1, [], [], []) = geompy.ImportXAO("C:/Users/joshin/AppData/Local/Temp/shaper_nujwvrfp.xao")
+(imported, motor_not_cut, [], [], []) = geompy.ImportXAO("C:/Users/joshin/AppData/Local/Temp/shaper_ppll6wgl.xao")
+Vertex_1 = geompy.MakeVertex(0, -40, 0)
+Vector_1 = geompy.MakeVectorDXDYDZ(0, 1, 0)
+Cylinder_outter_coil = geompy.MakeCylinder(Vertex_1, Vector_1, 40, 80)
+Cylinder_inner_coil = geompy.MakeCylinder(Vertex_1, Vector_1, 31, 80)
+Cylinder_1_2 = geompy.MakeCutList(Cylinder_outter_coil, [Cylinder_inner_coil], True)
+Vertex_2 = geompy.MakeVertex(0, -27, 0)
+Cylinder_squral_cazy = geompy.MakeCylinder(Vertex_2, Vector_1, 27.3, 54)
+Vertex_3 = geompy.MakeVertex(0, -80, 0)
+Cylinder_shaft = geompy.MakeCylinder(Vertex_3, Vector_1, 6, 170)
+rotor = geompy.MakeFuseList([Cylinder_squral_cazy, Cylinder_shaft], True, True)
+Vertex_4 = geompy.MakeVertex(0, -88, 0)
+Cylinder_fluid_inside = geompy.MakeCylinder(Vertex_4, Vector_1, 50, 135)
+(imported, Revolution_fluid_filled, [], [], []) = geompy.ImportXAO("C:/Users/joshin/AppData/Local/Temp/shaper_a6s7rzpi.xao")
+(imported, geomObj_2, [], [], []) = geompy.ImportXAO("C:/Users/joshin/AppData/Local/Temp/shaper_ttab6rwl.xao")
+(imported, case_edited_not_cut, [], [], []) = geompy.ImportXAO("C:/Users/joshin/AppData/Local/Temp/shaper_lazp9ibs.xao")
+(imported, stator, [], [], []) = geompy.ImportXAO("C:/Users/joshin/AppData/Local/Temp/shaper_eycaer24.xao")
+case = geompy.MakeCutList(case_edited_not_cut, [rotor, stator], True)
+Vertex_5 = geompy.MakeVertex(0, -150, 0)
+Cylinder_1 = geompy.MakeCylinder(Vertex_5, Vector_1, 100, 400)
+(imported, case_with_fin, [], [], []) = geompy.ImportXAO("C:/Users/joshin/AppData/Local/Temp/shaper_0fhoem65.xao")
+(imported, case_not_fin, [], [], []) = geompy.ImportXAO("C:/Users/joshin/AppData/Local/Temp/shaper_wrood7rc.xao")
+case_1 = geompy.MakeCutList(case_not_fin, [rotor, stator], True)
+(imported, Fuse_1_1, [], [], []) = geompy.ImportXAO("C:/Users/joshin/AppData/Local/Temp/shaper_9m54sqj7.xao")
+case_2 = geompy.MakeCutList(Fuse_1_1, [rotor, stator], True)
+(imported, Fuse_1_1_1, [], [], []) = geompy.ImportXAO("C:/Users/joshin/AppData/Local/Temp/shaper_jqgpszin.xao")
+case_3 = geompy.MakeCutList(Fuse_1_1_1, [rotor, stator], True)
+(imported, Extrusion_1_1, [], [], []) = geompy.ImportXAO("C:/Users/joshin/AppData/Local/Temp/shaper_9dl8qwx5.xao")
+.SetColor(SALOMEDS.Color(1,0.333333,0))
+case.SetAutoColor(1)
+geompy.addToStudy( motor_not_cut, 'motor_not_cut' )
+geompy.addToStudy( Vertex_5, 'Vertex_5' )
+geompy.addToStudy( Vector_1, 'Vector_1' )
+geompy.addToStudy( Cylinder_1, 'Cylinder_1' )
+geompy.addToStudy( Vertex_1, 'Vertex_1' )
+geompy.addToStudy( Cylinder_outter_coil, 'Cylinder_outter_coil' )
+geompy.addToStudy( Cylinder_inner_coil, 'Cylinder_inner_coil' )
+geompy.addToStudy( Cylinder_1_2, 'Cylinder_1-2' )
+geompy.addToStudy( Vertex_2, 'Vertex_2' )
+geompy.addToStudy( Cylinder_squral_cazy, 'Cylinder_squral_cazy' )
+geompy.addToStudy( Vertex_3, 'Vertex_3' )
+geompy.addToStudy( Cylinder_shaft, 'Cylinder_shaft' )
+geompy.addToStudy( rotor, 'rotor' )
+geompy.addToStudy( Vertex_4, 'Vertex_4' )
+geompy.addToStudy( Cylinder_fluid_inside, 'Cylinder_fluid_inside' )
+geompy.addToStudy( Revolution_fluid_filled, 'Revolution_fluid_filled' )
+geompy.addToStudy( case_with_fin, 'case_with_fin' )
+geompy.addToStudy( case_edited_not_cut, 'case_edited_not_cut' )
+geompy.addToStudy( stator, 'stator' )
+geompy.addToStudy( case, 'case' )
+geompy.addToStudy( case_not_fin, 'case_not_fin' )
+geompy.addToStudy( case_1, 'case' )
+geompy.addToStudy( Fuse_1_1, 'Fuse_1_1' )
+geompy.addToStudy( case_2, 'case' )
+geompy.addToStudy( Fuse_1_1_1, 'Fuse_1_1' )
+geompy.addToStudy( case_3, 'case' )
+geompy.addToStudy( Extrusion_1_1, 'Extrusion_1_1' )
+
+###
+### SMESH component
+###
+
+import  SMESH, SALOMEDS
+from salome.smesh import smeshBuilder
+
+smesh = smeshBuilder.New()
+#smesh.SetEnablePublish( False ) # Set to False to avoid publish in study if not needed or in some particular situations:
+                                 # multiples meshes built in parallel, complex and numerous mesh edition (performance)
+
+NETGEN_3D_Parameters_1 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_1.SetMaxSize( 22.2924 )
+NETGEN_3D_Parameters_1.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_1.SetOptimize( 1 )
+NETGEN_3D_Parameters_1.SetFineness( 2 )
+NETGEN_3D_Parameters_1.SetChordalError( -1 )
+NETGEN_3D_Parameters_1.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_1.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_1.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_1.SetQuadAllowed( 0 )
+NETGEN_1D_2D_3D = smesh.CreateHypothesis('NETGEN_2D3D', 'NETGENEngine')
+NETGEN_3D_Parameters_1.SetMinSize( 1 )
+NETGEN_3D_Parameters_1.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_2 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_2.SetMaxSize( 20 )
+NETGEN_3D_Parameters_2.SetMinSize( 1 )
+NETGEN_3D_Parameters_2.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_2.SetOptimize( 1 )
+NETGEN_3D_Parameters_2.SetFineness( 2 )
+NETGEN_3D_Parameters_2.SetChordalError( -1 )
+NETGEN_3D_Parameters_2.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_2.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_2.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_2.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_2.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_3 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_3.SetMaxSize( 10 )
+NETGEN_3D_Parameters_3.SetMinSize( 1 )
+NETGEN_3D_Parameters_3.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_3.SetOptimize( 1 )
+NETGEN_3D_Parameters_3.SetFineness( 2 )
+NETGEN_3D_Parameters_3.SetChordalError( -1 )
+NETGEN_3D_Parameters_3.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_3.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_3.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_3.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_3.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_4 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_4.SetMaxSize( 37.7492 )
+NETGEN_3D_Parameters_4.SetMinSize( 0.1 )
+NETGEN_3D_Parameters_4.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_4.SetOptimize( 1 )
+NETGEN_3D_Parameters_4.SetFineness( 2 )
+NETGEN_3D_Parameters_4.SetChordalError( -1 )
+NETGEN_3D_Parameters_4.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_4.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_4.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_4.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_4.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_5 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_5.SetMaxSize( 10 )
+NETGEN_3D_Parameters_5.SetMinSize( 0.5 )
+NETGEN_3D_Parameters_5.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_5.SetOptimize( 1 )
+NETGEN_3D_Parameters_5.SetFineness( 2 )
+NETGEN_3D_Parameters_5.SetChordalError( -1 )
+NETGEN_3D_Parameters_5.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_5.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_5.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_5.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_5.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_5.SetMinSize( 1 )
+NETGEN_3D_Parameters_5.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_6 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_6.SetMaxSize( 30 )
+NETGEN_3D_Parameters_6.SetMinSize( 1 )
+NETGEN_3D_Parameters_6.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_6.SetOptimize( 1 )
+NETGEN_3D_Parameters_6.SetFineness( 2 )
+NETGEN_3D_Parameters_6.SetChordalError( -1 )
+NETGEN_3D_Parameters_6.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_6.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_6.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_6.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_6.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_6.SetMinSize( 2 )
+NETGEN_3D_Parameters_6.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_7 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_7.SetMaxSize( 35 )
+NETGEN_3D_Parameters_7.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_7.SetOptimize( 1 )
+NETGEN_3D_Parameters_7.SetChordalError( -1 )
+NETGEN_3D_Parameters_7.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_7.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_7.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_7.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_7.SetMinSize( 3 )
+NETGEN_3D_Parameters_7.SetFineness( 3 )
+NETGEN_3D_Parameters_7.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_8 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_8.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_8.SetOptimize( 1 )
+NETGEN_3D_Parameters_8.SetChordalError( -1 )
+NETGEN_3D_Parameters_8.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_8.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_8.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_8.SetQuadAllowed( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_8.SetMaxSize( 10 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_8.SetMinSize( 1 )
+NETGEN_3D_Parameters_8.SetFineness( 3 )
+NETGEN_3D_Parameters_8.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Simple_Parameters_1 = smesh.CreateHypothesis('NETGEN_SimpleParameters_3D', 'NETGENEngine')
+NETGEN_3D_Simple_Parameters_1.SetNumberOfSegments( 15 )
+NETGEN_3D_Simple_Parameters_1.LengthFromEdges()
+NETGEN_3D_Simple_Parameters_1.LengthFromFaces()
+NETGEN_3D_Parameters_9 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_9.SetMaxSize( 37.7492 )
+NETGEN_3D_Parameters_9.SetMinSize( 0.0295422 )
+NETGEN_3D_Parameters_9.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_9.SetOptimize( 1 )
+NETGEN_3D_Parameters_9.SetFineness( 2 )
+NETGEN_3D_Parameters_9.SetChordalError( -1 )
+NETGEN_3D_Parameters_9.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_9.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_9.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_9.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_9.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_10 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_10.SetMaxSize( 37 )
+NETGEN_3D_Parameters_10.SetMinSize( 0.02 )
+NETGEN_3D_Parameters_10.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_10.SetOptimize( 1 )
+NETGEN_3D_Parameters_10.SetFineness( 2 )
+NETGEN_3D_Parameters_10.SetChordalError( -1 )
+NETGEN_3D_Parameters_10.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_10.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_10.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_10.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_10.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_11 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_11.SetMaxSize( 23.8403 )
+NETGEN_3D_Parameters_11.SetMinSize( 0.0295422 )
+NETGEN_3D_Parameters_11.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_11.SetOptimize( 1 )
+NETGEN_3D_Parameters_11.SetFineness( 2 )
+NETGEN_3D_Parameters_11.SetChordalError( -1 )
+NETGEN_3D_Parameters_11.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_11.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_11.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_11.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_11.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_12 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_12.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_12.SetOptimize( 1 )
+NETGEN_3D_Parameters_12.SetFineness( 2 )
+NETGEN_3D_Parameters_12.SetChordalError( -1 )
+NETGEN_3D_Parameters_12.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_12.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_12.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_12.SetQuadAllowed( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_12.SetMaxSize( 6 )
+NETGEN_3D_Parameters_12.SetMinSize( 5 )
+NETGEN_3D_Parameters_12.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Simple_Parameters_2 = smesh.CreateHypothesis('NETGEN_SimpleParameters_3D', 'NETGENEngine')
+NETGEN_3D_Simple_Parameters_2.SetNumberOfSegments( 15 )
+NETGEN_3D_Simple_Parameters_2.LengthFromEdges()
+NETGEN_3D_Simple_Parameters_2.LengthFromFaces()
+NETGEN_3D_Parameters_1.SetMinSize( 1 )
+NETGEN_3D_Parameters_1.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_1.SetOptimize( 1 )
+NETGEN_3D_Parameters_1.SetFineness( 2 )
+NETGEN_3D_Parameters_1.SetChordalError( 0 )
+NETGEN_3D_Parameters_1.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_1.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_1.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_1.SetQuadAllowed( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_1.SetMaxSize( 5 )
+NETGEN_3D_Parameters_1.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_13 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_13.SetMinSize( 0.03 )
+NETGEN_3D_Parameters_13.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_13.SetOptimize( 1 )
+NETGEN_3D_Parameters_13.SetFineness( 2 )
+NETGEN_3D_Parameters_13.SetChordalError( -1 )
+NETGEN_3D_Parameters_13.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_13.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_13.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_13.SetQuadAllowed( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_13.SetMaxSize( 5 )
+NETGEN_3D_Parameters_13.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_14 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_14.SetMaxSize( 37 )
+NETGEN_3D_Parameters_14.SetMinSize( 0.03 )
+NETGEN_3D_Parameters_14.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_14.SetOptimize( 1 )
+NETGEN_3D_Parameters_14.SetFineness( 2 )
+NETGEN_3D_Parameters_14.SetChordalError( -1 )
+NETGEN_3D_Parameters_14.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_14.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_14.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_14.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_14.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Simple_Parameters_3 = smesh.CreateHypothesis('NETGEN_SimpleParameters_3D', 'NETGENEngine')
+NETGEN_3D_Simple_Parameters_3.SetNumberOfSegments( 15 )
+NETGEN_3D_Simple_Parameters_3.LengthFromEdges()
+NETGEN_3D_Simple_Parameters_3.LengthFromFaces()
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_14.SetMaxSize( 3 )
+NETGEN_3D_Parameters_14.SetMinSize( 0.1 )
+NETGEN_3D_Parameters_14.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Simple_Parameters_4 = smesh.CreateHypothesis('NETGEN_SimpleParameters_3D', 'NETGENEngine')
+NETGEN_3D_Simple_Parameters_4.SetNumberOfSegments( 15 )
+NETGEN_3D_Simple_Parameters_4.LengthFromEdges()
+NETGEN_3D_Simple_Parameters_4.LengthFromFaces()
+NETGEN_3D_Parameters_15 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_15.SetMinSize( 1 )
+NETGEN_3D_Parameters_15.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_15.SetOptimize( 1 )
+NETGEN_3D_Parameters_15.SetFineness( 2 )
+NETGEN_3D_Parameters_15.SetChordalError( -1 )
+NETGEN_3D_Parameters_15.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_15.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_15.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_15.SetQuadAllowed( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_16 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_16.SetMaxSize( 5 )
+NETGEN_3D_Parameters_16.SetMinSize( 0.03 )
+NETGEN_3D_Parameters_16.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_16.SetOptimize( 1 )
+NETGEN_3D_Parameters_16.SetFineness( 2 )
+NETGEN_3D_Parameters_16.SetChordalError( -1 )
+NETGEN_3D_Parameters_16.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_16.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_16.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_16.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_16.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_15.SetMaxSize( 2 )
+NETGEN_3D_Parameters_15.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_17 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_17.SetMaxSize( 20 )
+NETGEN_3D_Parameters_17.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_17.SetOptimize( 1 )
+NETGEN_3D_Parameters_17.SetFineness( 2 )
+NETGEN_3D_Parameters_17.SetChordalError( -1 )
+NETGEN_3D_Parameters_17.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_17.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_17.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_17.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_17.SetMinSize( 1 )
+NETGEN_3D_Parameters_17.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_18 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_18.SetMaxSize( 48.9898 )
+NETGEN_3D_Parameters_18.SetMinSize( 1.44644 )
+NETGEN_3D_Parameters_18.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_18.SetOptimize( 1 )
+NETGEN_3D_Parameters_18.SetFineness( 2 )
+NETGEN_3D_Parameters_18.SetChordalError( -1 )
+NETGEN_3D_Parameters_18.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_18.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_18.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_18.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_18.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_19 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_19.SetMaxSize( 48 )
+NETGEN_3D_Parameters_19.SetMinSize( 0.6 )
+NETGEN_3D_Parameters_19.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_19.SetOptimize( 1 )
+NETGEN_3D_Parameters_19.SetFineness( 2 )
+NETGEN_3D_Parameters_19.SetChordalError( -1 )
+NETGEN_3D_Parameters_19.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_19.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_19.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_19.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_19.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_20 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_20.SetMaxSize( 48 )
+NETGEN_3D_Parameters_20.SetMinSize( 0.6 )
+NETGEN_3D_Parameters_20.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_20.SetOptimize( 1 )
+NETGEN_3D_Parameters_20.SetFineness( 2 )
+NETGEN_3D_Parameters_20.SetChordalError( -1 )
+NETGEN_3D_Parameters_20.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_20.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_20.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_20.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_20.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_21 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_21.SetMaxSize( 48 )
+NETGEN_3D_Parameters_21.SetMinSize( 0.03 )
+NETGEN_3D_Parameters_21.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_21.SetOptimize( 1 )
+NETGEN_3D_Parameters_21.SetFineness( 2 )
+NETGEN_3D_Parameters_21.SetChordalError( -1 )
+NETGEN_3D_Parameters_21.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_21.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_21.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_21.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_21.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_22 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_22.SetMaxSize( 40 )
+NETGEN_3D_Parameters_22.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_22.SetOptimize( 1 )
+NETGEN_3D_Parameters_22.SetFineness( 2 )
+NETGEN_3D_Parameters_22.SetChordalError( -1 )
+NETGEN_3D_Parameters_22.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_22.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_22.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_22.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_22.SetMinSize( 0.1 )
+NETGEN_3D_Parameters_22.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_23 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_23.SetMaxSize( 48 )
+NETGEN_3D_Parameters_23.SetMinSize( 0.03 )
+NETGEN_3D_Parameters_23.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_23.SetOptimize( 1 )
+NETGEN_3D_Parameters_23.SetFineness( 2 )
+NETGEN_3D_Parameters_23.SetChordalError( -1 )
+NETGEN_3D_Parameters_23.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_23.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_23.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_23.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_23.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_24 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_24.SetMaxSize( 22 )
+NETGEN_3D_Parameters_24.SetMinSize( 0.005 )
+NETGEN_3D_Parameters_24.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_24.SetOptimize( 1 )
+NETGEN_3D_Parameters_24.SetFineness( 2 )
+NETGEN_3D_Parameters_24.SetChordalError( -1 )
+NETGEN_3D_Parameters_24.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_24.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_24.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_24.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_24.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_25 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_25.SetMaxSize( 48 )
+NETGEN_3D_Parameters_25.SetMinSize( 0.03 )
+NETGEN_3D_Parameters_25.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_25.SetOptimize( 1 )
+NETGEN_3D_Parameters_25.SetFineness( 2 )
+NETGEN_3D_Parameters_25.SetChordalError( -1 )
+NETGEN_3D_Parameters_25.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_25.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_25.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_25.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_25.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_26 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_26.SetMaxSize( 22.5136 )
+NETGEN_3D_Parameters_26.SetMinSize( 0.0105005 )
+NETGEN_3D_Parameters_26.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_26.SetOptimize( 1 )
+NETGEN_3D_Parameters_26.SetFineness( 2 )
+NETGEN_3D_Parameters_26.SetChordalError( -1 )
+NETGEN_3D_Parameters_26.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_26.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_26.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_26.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_26.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_27 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_27.SetMaxSize( 22.3292 )
+NETGEN_3D_Parameters_27.SetMinSize( 0.182109 )
+NETGEN_3D_Parameters_27.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_27.SetOptimize( 1 )
+NETGEN_3D_Parameters_27.SetFineness( 2 )
+NETGEN_3D_Parameters_27.SetChordalError( -1 )
+NETGEN_3D_Parameters_27.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_27.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_27.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_27.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_27.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_28 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_28.SetMaxSize( 48.9898 )
+NETGEN_3D_Parameters_28.SetMinSize( 0.666825 )
+NETGEN_3D_Parameters_28.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_28.SetOptimize( 1 )
+NETGEN_3D_Parameters_28.SetFineness( 2 )
+NETGEN_3D_Parameters_28.SetChordalError( -1 )
+NETGEN_3D_Parameters_28.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_28.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_28.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_28.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_28.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_29 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_29.SetMaxSize( 48.9898 )
+NETGEN_3D_Parameters_29.SetMinSize( 0.666825 )
+NETGEN_3D_Parameters_29.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_29.SetOptimize( 1 )
+NETGEN_3D_Parameters_29.SetFineness( 2 )
+NETGEN_3D_Parameters_29.SetChordalError( -1 )
+NETGEN_3D_Parameters_29.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_29.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_29.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_29.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_29.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_30 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_30.SetMaxSize( 48.9898 )
+NETGEN_3D_Parameters_30.SetMinSize( 0.666825 )
+NETGEN_3D_Parameters_30.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_30.SetOptimize( 1 )
+NETGEN_3D_Parameters_30.SetFineness( 2 )
+NETGEN_3D_Parameters_30.SetChordalError( -1 )
+NETGEN_3D_Parameters_30.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_30.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_30.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_30.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_30.SetCheckChartBoundary( 0 )
+Mesh_1 = smesh.Mesh(__NOT__Published__Object__)
+status = Mesh_1.AddHypothesis(NETGEN_3D_Parameters_30)
+status = Mesh_1.AddHypothesis(NETGEN_1D_2D_3D)
+outlet_fluid = Mesh_1.GroupOnGeom(__NOT__Published__Object__,'outlet_fluid',SMESH.FACE)
+inlet_fluid = Mesh_1.GroupOnGeom(__NOT__Published__Object__,'inlet_fluid',SMESH.FACE)
+wall_fluid = Mesh_1.GroupOnGeom(__NOT__Published__Object__,'wall_fluid',SMESH.FACE)
+case_4 = Mesh_1.GroupOnGeom(__NOT__Published__Object__,'case',SMESH.VOLUME)
+fluid_inside = Mesh_1.GroupOnGeom(__NOT__Published__Object__,'fluid_inside',SMESH.VOLUME)
+stator_1 = Mesh_1.GroupOnGeom(__NOT__Published__Object__,'stator',SMESH.VOLUME)
+rotor_1 = Mesh_1.GroupOnGeom(__NOT__Published__Object__,'rotor',SMESH.VOLUME)
+coil = Mesh_1.GroupOnGeom(__NOT__Published__Object__,'coil',SMESH.VOLUME)
+fluid = Mesh_1.GroupOnGeom(__NOT__Published__Object__,'fluid',SMESH.VOLUME)
+isDone = Mesh_1.Compute()
+[ outlet_fluid, inlet_fluid, wall_fluid, case_4, fluid_inside, stator_1, rotor_1, coil, fluid ] = Mesh_1.GetGroups()
+try:
+  Mesh_1.ExportUNV( r'G:/GitHubDeskTop/MultiLayerHeatTransferEx/salomeFile/motor_gft.unv' )
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_31 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_31.SetMaxSize( 42.4264 )
+NETGEN_3D_Parameters_31.SetMinSize( 0.666825 )
+NETGEN_3D_Parameters_31.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_31.SetOptimize( 1 )
+NETGEN_3D_Parameters_31.SetFineness( 2 )
+NETGEN_3D_Parameters_31.SetChordalError( -1 )
+NETGEN_3D_Parameters_31.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_31.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_31.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_31.SetCheckChartBoundary( 0 )
+NETGEN_3D_Parameters_31.SetQuadAllowed( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+NETGEN_3D_Parameters_32 = smesh.CreateHypothesis('NETGEN_Parameters', 'NETGENEngine')
+NETGEN_3D_Parameters_32.SetMaxSize( 42 )
+NETGEN_3D_Parameters_32.SetMinSize( 0.6 )
+NETGEN_3D_Parameters_32.SetSecondOrder( 0 )
+NETGEN_3D_Parameters_32.SetOptimize( 1 )
+NETGEN_3D_Parameters_32.SetFineness( 2 )
+NETGEN_3D_Parameters_32.SetChordalError( -1 )
+NETGEN_3D_Parameters_32.SetChordalErrorEnabled( 0 )
+NETGEN_3D_Parameters_32.SetUseSurfaceCurvature( 1 )
+NETGEN_3D_Parameters_32.SetFuseEdges( 1 )
+NETGEN_3D_Parameters_32.SetQuadAllowed( 0 )
+NETGEN_3D_Parameters_32.SetCheckChartBoundary( 0 )
+try:
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+#hyp_41.SetLength( 41.833 ) ### not created Object
+NETGEN_3D_Parameters_33 = smesh.CreateHypothesisByAverageLength( 'NETGEN_Parameters', 'NETGENEngine', 41.833, 0 )
+Mesh_4 = smesh.Mesh(__NOT__Published__Object__)
+status = Mesh_4.AddHypothesis( __NOT__Published__Object__, NETGEN_3D_Parameters_33 )
+status = Mesh_4.AddHypothesis(NETGEN_1D_2D_3D)
+fluid_1 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'fluid',SMESH.VOLUME)
+case_5 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'case',SMESH.VOLUME)
+stator_2 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'stator',SMESH.VOLUME)
+coil_1 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'coil',SMESH.VOLUME)
+fluid_inside_1 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'fluid_inside',SMESH.VOLUME)
+rotor_2 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'rotor',SMESH.VOLUME)
+inlet_fluid_1 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'inlet_fluid',SMESH.FACE)
+wall_fluid_1 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wall_fluid',SMESH.FACE)
+outlet_fluid_1 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'outlet_fluid',SMESH.FACE)
+wedge_fluid1 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wedge_fluid1',SMESH.FACE)
+wedge_case1 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wedge_case1',SMESH.FACE)
+wedge_stator1 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wedge_stator1',SMESH.FACE)
+wedge_coil1 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wedge_coil1',SMESH.FACE)
+wedge_rotor1 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wedge_rotor1',SMESH.FACE)
+wedge_fluid_inside1 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wedge_fluid_inside1',SMESH.FACE)
+wedge_fluid2 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wedge_fluid2',SMESH.FACE)
+wedge_case2 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wedge_case2',SMESH.FACE)
+wedge_stator2 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wedge_stator2',SMESH.FACE)
+wedge_coil2 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wedge_coil2',SMESH.FACE)
+wedge_rotor2 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wedge_rotor2',SMESH.FACE)
+wedge_fluid_inside2 = Mesh_4.GroupOnGeom(__NOT__Published__Object__,'wedge_fluid_inside2',SMESH.FACE)
+isDone = Mesh_4.Compute()
+[ fluid_1, case_5, stator_2, coil_1, fluid_inside_1, rotor_2, inlet_fluid_1, wall_fluid_1, outlet_fluid_1, wedge_fluid1, wedge_case1, wedge_stator1, wedge_coil1, wedge_rotor1, wedge_fluid_inside1, wedge_fluid2, wedge_case2, wedge_stator2, wedge_coil2, wedge_rotor2, wedge_fluid_inside2 ] = Mesh_4.GetGroups()
+try:
+  Mesh_4.ExportUNV( r'G:/GitHubDeskTop/MultiLayerHeatTransferEx/salomeFile/motor_gft2.unv' )
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+try:
+  Mesh_4.ExportUNV( r'C:/GitHub/MultiLayerHeatTransferEx/salomeFile/motor_gft2.unv' )
+  pass
+except:
+  print('ExportUNV() failed. Invalid file name?')
+
+
+## Set names of Mesh objects
+smesh.SetName(NETGEN_3D_Parameters_14, 'NETGEN 3D Parameters_14')
+smesh.SetName(NETGEN_3D_Parameters_13, 'NETGEN 3D Parameters_13')
+smesh.SetName(NETGEN_3D_Parameters_9, 'NETGEN 3D Parameters_9')
+smesh.SetName(NETGEN_3D_Simple_Parameters_1, 'NETGEN 3D Simple Parameters_1')
+smesh.SetName(wedge_fluid_inside2, 'wedge_fluid_inside2')
+smesh.SetName(NETGEN_3D_Parameters_11, 'NETGEN 3D Parameters_11')
+smesh.SetName(wedge_rotor2, 'wedge_rotor2')
+smesh.SetName(NETGEN_3D_Parameters_10, 'NETGEN 3D Parameters_10')
+smesh.SetName(stator_2, 'stator')
+smesh.SetName(wedge_case2, 'wedge_case2')
+smesh.SetName(case_5, 'case')
+smesh.SetName(wedge_fluid2, 'wedge_fluid2')
+smesh.SetName(fluid_1, 'fluid')
+smesh.SetName(NETGEN_1D_2D_3D, 'NETGEN 1D-2D-3D')
+smesh.SetName(wedge_coil2, 'wedge_coil2')
+smesh.SetName(wedge_stator2, 'wedge_stator2')
+smesh.SetName(NETGEN_3D_Simple_Parameters_3, 'NETGEN 3D Simple Parameters_3')
+smesh.SetName(rotor_2, 'rotor')
+smesh.SetName(fluid_inside_1, 'fluid_inside')
+smesh.SetName(Mesh_1.GetMesh(), 'Mesh_1')
+smesh.SetName(coil_1, 'coil')
+smesh.SetName(inlet_fluid, 'inlet_fluid')
+smesh.SetName(wall_fluid, 'wall_fluid')
+smesh.SetName(outlet_fluid, 'outlet_fluid')
+smesh.SetName(coil, 'coil')
+smesh.SetName(rotor_1, 'rotor')
+smesh.SetName(fluid, 'fluid')
+smesh.SetName(wedge_rotor1, 'wedge_rotor1')
+smesh.SetName(case_4, 'case')
+smesh.SetName(wedge_fluid_inside1, 'wedge_fluid_inside1')
+smesh.SetName(stator_1, 'stator')
+smesh.SetName(fluid_inside, 'fluid_inside')
+smesh.SetName(wedge_fluid1, 'wedge_fluid1')
+smesh.SetName(wedge_case1, 'wedge_case1')
+smesh.SetName(wedge_stator1, 'wedge_stator1')
+smesh.SetName(wedge_coil1, 'wedge_coil1')
+smesh.SetName(NETGEN_3D_Parameters_31, 'NETGEN 3D Parameters_31')
+smesh.SetName(inlet_fluid_1, 'inlet_fluid')
+smesh.SetName(NETGEN_3D_Parameters_30, 'NETGEN 3D Parameters_30')
+smesh.SetName(NETGEN_3D_Parameters_3, 'NETGEN 3D Parameters_3')
+smesh.SetName(wall_fluid_1, 'wall_fluid')
+smesh.SetName(NETGEN_3D_Parameters_29, 'NETGEN 3D Parameters_29')
+smesh.SetName(NETGEN_3D_Parameters_4, 'NETGEN 3D Parameters_4')
+smesh.SetName(outlet_fluid_1, 'outlet_fluid')
+smesh.SetName(NETGEN_3D_Parameters_28, 'NETGEN 3D Parameters_28')
+smesh.SetName(NETGEN_3D_Parameters_5, 'NETGEN 3D Parameters_5')
+smesh.SetName(NETGEN_3D_Parameters_27, 'NETGEN 3D Parameters_27')
+smesh.SetName(NETGEN_3D_Parameters_6, 'NETGEN 3D Parameters_6')
+smesh.SetName(NETGEN_3D_Parameters_26, 'NETGEN 3D Parameters_26')
+smesh.SetName(NETGEN_3D_Parameters_20, 'NETGEN 3D Parameters_20')
+smesh.SetName(NETGEN_3D_Parameters_25, 'NETGEN 3D Parameters_25')
+smesh.SetName(NETGEN_3D_Parameters_21, 'NETGEN 3D Parameters_21')
+smesh.SetName(NETGEN_3D_Parameters_1, 'NETGEN 3D Parameters_1')
+smesh.SetName(NETGEN_3D_Parameters_24, 'NETGEN 3D Parameters_24')
+smesh.SetName(NETGEN_3D_Parameters_18, 'NETGEN 3D Parameters_18')
+smesh.SetName(NETGEN_3D_Parameters_2, 'NETGEN 3D Parameters_2')
+smesh.SetName(NETGEN_3D_Parameters_19, 'NETGEN 3D Parameters_19')
+smesh.SetName(NETGEN_3D_Parameters_16, 'NETGEN 3D Parameters_16')
+smesh.SetName(Mesh_4.GetMesh(), 'Mesh_4')
+smesh.SetName(NETGEN_3D_Parameters_17, 'NETGEN 3D Parameters_17')
+smesh.SetName(NETGEN_3D_Simple_Parameters_4, 'NETGEN 3D Simple Parameters_4')
+smesh.SetName(NETGEN_3D_Parameters_15, 'NETGEN 3D Parameters_15')
+smesh.SetName(NETGEN_3D_Parameters_7, 'NETGEN 3D Parameters_7')
+smesh.SetName(NETGEN_3D_Parameters_33, 'NETGEN 3D Parameters_33')
+smesh.SetName(NETGEN_3D_Parameters_8, 'NETGEN 3D Parameters_8')
+smesh.SetName(NETGEN_3D_Parameters_32, 'NETGEN 3D Parameters_32')
+smesh.SetName(NETGEN_3D_Parameters_22, 'NETGEN 3D Parameters_22')
+smesh.SetName(NETGEN_3D_Parameters_23, 'NETGEN 3D Parameters_23')
+smesh.SetName(NETGEN_3D_Simple_Parameters_2, 'NETGEN 3D Simple Parameters_2')
+smesh.SetName(NETGEN_3D_Parameters_12, 'NETGEN 3D Parameters_12')
+
+###
+### HEXABLOCK component
+###
+
+
+if salome.sg.hasDesktop():
+  salome.sg.updateObjBrowser()
