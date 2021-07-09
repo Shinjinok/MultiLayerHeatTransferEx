@@ -27,7 +27,7 @@ boundaryField
         value           $internalField;
         Tnbr            T;
     }
-"wedge.*"
+"wall.*"
     {
      type            zeroGradient;
     }     

@@ -42,10 +42,10 @@ boundaryField
         value           $internalField;
         Tnbr            T;
     }
-    
-    "wedge.*"
+
+    guid_fluid
     {
-     type            zeroGradient;
+        type            zeroGradient;
     }
     
 }

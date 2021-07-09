@@ -28,7 +28,7 @@ boundaryField
         Tnbr            T;
     }
     
-    "wedge.*"
+    "wall.*"
     {
      type            zeroGradient;
     }

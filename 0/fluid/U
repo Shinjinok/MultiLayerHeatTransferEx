@@ -17,7 +17,7 @@ FoamFile
 
 dimensions      [ 0 1 -1 0 0 0 0 ];
 
-internalField   uniform (0 10 0);
+internalField   uniform (0 1 0);
 
 boundaryField
 {
@@ -48,11 +48,10 @@ boundaryField
         type    noSlip;
     }
     
-    "wedge.*"
+    guid_fluid
     {
-        type            slip;
-    }
-    
+        type            noSlip;
+    }    
 
 }
 

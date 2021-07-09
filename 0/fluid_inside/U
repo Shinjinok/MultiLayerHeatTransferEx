@@ -27,7 +27,7 @@ boundaryField
         type            noSlip;
     }
     
-    "wedge.*"
+    "wall.*"
     {
          type            slip;
     }  
