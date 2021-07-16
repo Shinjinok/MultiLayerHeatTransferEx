@@ -38,7 +38,7 @@ boundaryField
 
     }
 
-    wall_fluid
+    wall_
     {
          type    slip;
     }
@@ -48,7 +48,7 @@ boundaryField
         type    noSlip;
     }
     
-    guid_fluid
+    guide_fluid
     {
         type            noSlip;
     }    

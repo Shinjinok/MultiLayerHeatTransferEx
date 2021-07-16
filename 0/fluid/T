@@ -32,7 +32,7 @@ boundaryField
         type            fixedValue;
         value           $internalField;
     }
-    wall_fluid
+    wall_
     {
         type            zeroGradient;
     }
@@ -43,7 +43,7 @@ boundaryField
         Tnbr            T;
     }
 
-    guid_fluid
+    guide_fluid
     {
         type            zeroGradient;
     }
