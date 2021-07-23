@@ -10,7 +10,7 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "constant/coil";
+    location    "constant/rotor";
     object      fvOptions;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -30,7 +30,7 @@ options
         {
             e
             {
-                explicit    3e4; // W/m^3 == kg/m/s^3
+                explicit    1e4; // W/m^3 == kg/m/s^3
                 implicit    0;
             }
         }
