@@ -1,4 +1,4 @@
-
+pkg load symbolic
 clear; clc; close all;
 
 R1m = 6.8;
