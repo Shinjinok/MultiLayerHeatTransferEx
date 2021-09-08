@@ -157,9 +157,9 @@ f = 60;
 R = 120*f/4;
 Xc = 1/(2*pi*f*C);
 
-for num = 1: length(data),
-s=(R-Rpme(num))/R;
-Vm = Ve(num);
+%for num = 1: length(data),
+s=1;
+Vm = 1;
 Va = Vm;
 Z1m = R1m+j*X1m;
 Z1a = R1a+j*X1a;
@@ -173,11 +173,15 @@ Z21 = j*a*(Zf-Zb);
 Z22 = Zc+Z1a+a^2*(Zf+Zb);
 Z_m = [Z11 Z12
        Z21 Z22];
+Z_md = 1/(1/Z11+1/Z22)
 %disp('current');
 Ima = inv(Z_m)*[Vm Va]';
-Iin = Ima(1) + Ima(2) +(Pc+PM)/Vm;
+Iin = Ima(1) + Ima(2);
 pf = real(Iin)/abs(Iin);
 Pin = Vm*abs(Iin)*pf;
+%Iin = abs(Ima(1) + Ima(2))+(Pc+PM)/Vm;;
+%pf = real(Ima(1) + Ima(2))/Iin;
+%Pin = Vm*Iin*pf;
 
 %torque
 Im = Ima(1);
@@ -194,7 +198,7 @@ T = 1/(2*pi*f)*(Pgf-Pgb);
 %efficiency
 Pout = T*2*pi*f*(1-s);
 n = Pout/Pin;
-
+return
 log(num,8) = pf;
 log(num,7) = Pout;
 log(num,6) = Pin;
@@ -203,7 +207,7 @@ log(num,4) = pf;
 log(num,3) = n;
 log(num,2) = T;
 log(num,1) = Rpme(num);
-end
+%end
 
 
 
