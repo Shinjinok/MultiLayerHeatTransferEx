@@ -149,16 +149,16 @@ Xm = 82.465
 %zre = R1m + R2*Xm^2 / (R2^2+(X2+Xm)^2)
 %zim = X1m + (R2^2*Xm+Xm*X2^2+Xm^2*X2) / (R2^2+(X2+Xm)^2)
 disp( 'turn ratio')
-a = sqrt(X1a/X1m)
-
+a = sqrt(X1a/X1m);
 disp( '----------------------')
 f = 60;
 %Rpm = 1774;
 R = 120*f/4;
 Xc = 1/(2*pi*f*C);
 
-for num = 1: length(data),
+for num = 1: 11,
 s=(R-Rpme(num))/R;
+ws = 2*3.14*Rpme(num)/60;
 Vm = Ve(num);
 Va = Vm;
 Z1m = R1m+j*X1m;
@@ -171,17 +171,18 @@ Z11 = Z1m+Zf+Zb;
 Z12 = -j*a*(Zf-Zb);
 Z21 = j*a*(Zf-Zb);
 Z22 = Zc+Z1a+a^2*(Zf+Zb);
-Z_m = [Z11 Z12
-       Z21 Z22];
-%disp('current');
+Z_m = [Z11 0
+       0 Z22];
+       
+%input power
 Ima = inv(Z_m)*[Vm Va]';
-Iin = Ima(1) + Ima(2) +(Pc+PM)/Vm;
+Im = Ima(1);
+Ia = Ima(2);
+Iin = Im + Ia + (Pc+PM)/Vm;
 pf = real(Iin)/abs(Iin);
 Pin = Vm*abs(Iin)*pf;
 
 %torque
-Im = Ima(1);
-Ia = Ima(2);
 Efm = Zf*Im;
 Ebm = Zb*Im;
 Efa = a^2*Zf*Ia;
@@ -190,18 +191,20 @@ Ef = Efm - j*Efa/a;
 Eb = Ebm + j*Eba/a;
 Pgf = real(Ef*conj(Im)+j*a*Ef*conj(Ia));
 Pgb = real(Eb*conj(Im)-j*a*Eb*conj(Ia));
-T = 1/(2*pi*f)*(Pgf-Pgb);
+Tq = 1/ws*(Pgf-Pgb);
 %efficiency
-Pout = T*2*pi*f*(1-s);
+Pout = Tq*ws*(1-s);
 n = Pout/Pin;
 
+%log
+log(num,9) = (1-s)*(Pgf-Pgb);
 log(num,8) = pf;
 log(num,7) = Pout;
 log(num,6) = Pin;
 log(num,5) = abs(Iin);
 log(num,4) = pf;
 log(num,3) = n;
-log(num,2) = T;
+log(num,2) = Tq;
 log(num,1) = Rpme(num);
 end
 
@@ -210,7 +213,7 @@ end
 figure(1)
 subplot(2,3,1)
 plot(log(:,1),log(:,2),Rpme,Te)
-axis([0 2000 0 1.5]);
+%axis([0 1800 0 1.5]);
 legend('simulation',dname);
 xlabel ("Rpm");
 ylabel ("Torqe(Nm)");
@@ -222,6 +225,7 @@ set(h, "fontsize", 16);
 %figure(2)
 subplot(2,3,2)
 plot(log(:,1),log(:,5),Rpme,Ie)
+axis([0 1800 0 2]);
 legend('simulation',dname);
 xlabel ("Rpm");
 ylabel ("Current(A)");
@@ -234,7 +238,7 @@ subplot(2,3,3)
 plot(log(:,1),log(:,8),Rpme,pfe)
 grid on
 legend('simulation',dname);
-axis([0 2000 0 1.5]);
+axis([0 1800 0 1.5]);
 xlabel ("Rpm");
 ylabel ("Power Factor");
 title('Power Factor-Rpm')
@@ -243,7 +247,7 @@ set(h, "fontsize", 16);
 %figure(3)
 subplot(2,3,4)
 plot(log(:,1),log(:,6),Rpme,Pine)
-axis([0 2000 0 400]);
+axis([0 1800 0 400]);
 legend('simulation',dname);
 xlabel ("Rpm");
 ylabel ("Input Power(W)");
@@ -255,6 +259,7 @@ set(h, "fontsize", 16);
 %figure(4)
 subplot(2,3,5)
 plot(log(:,1),log(:,7),Rpme,Poute)
+axis([0 1800 0 200]);
 legend('simulation',dname);
 xlabel ("Rpm");
 ylabel ("Output Power(W)");
@@ -266,7 +271,7 @@ set(h, "fontsize", 16);
 %figure(5)
 subplot(2,3,6)
 plot(log(:,1),log(:,3),Rpme,effa)
-axis([0 2000 0 1]);
+axis([0 1800 0 1]);
 legend('simulation',dname);
 xlabel ("Rpm");
 ylabel ("Efficiency");
@@ -274,7 +279,6 @@ title('Efficiency-Rpm')
 grid on
 h=get(gcf, "currentaxes");
 set(h, "fontsize", 16);
-
 
 
 #{
