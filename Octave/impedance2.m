@@ -23,15 +23,15 @@ Ps = 52.57;
 Is = 0.808;
 Vs = 100.3;
 R1a = 41.59;
-Psa = 53.68;
-Isa = 0.8162;
-Vsa = 99.7;
+P0a = 77;
+I0a = 0.9324;
+V0a = 213.7;
 C = 4*1e-6;
 %Vm = 220;
 PM = 14;
 
-param = [R1m P0 V0 I0 Ps Is Vs R1a Psa Isa Vsa C PM];
-X  = motorEstmate(param);
+param = [R1m P0 V0 I0 Ps Is Vs R1a P0a I0a V0a C PM];
+X  = motorEstmate2(param);
 #{
 R0 = X(1)
 R2 = X(2)
@@ -44,7 +44,7 @@ a = sqrt(X1a/X1m)
 disp( '----------------------')
 #}
 disp( '----------------------')
-s = (1800-1770)/1800
+s = (1800-1774)/1800
 log = motorSim2(param,X,s,[V0 0],f);
 V0
 I0
@@ -61,11 +61,12 @@ Ps
 Pin = log(6)
 pf = log(8)
 disp( '----------------------')
-log = motorSim2(param,X,1,[0 Vsa],f);
-Vsa
-Isa
+s = (1800-1776)/1800
+log = motorSim2(param,X,s,[0 V0a],f);
+V0a
+I0a
 Iin = log(4)
-Psa
+P0a
 Pin = log(6)
 pf = log(8)
 disp( '----------------------')

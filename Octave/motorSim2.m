@@ -37,7 +37,7 @@ Z12 = -j*a*(Zf-Zb);
 Z21 = j*a*(Zf-Zb);
 Z22 = Z1a+(Zf+Zb);
 Z_m = [Z11 0
-       0 Z22];
+       0 Z22]
        
 %input power
 Ima = inv(Z_m)*v';
