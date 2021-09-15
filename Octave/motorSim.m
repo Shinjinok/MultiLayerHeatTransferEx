@@ -88,8 +88,8 @@ log(num,5) = Pout;
 log(num,6) = Pin;
 log(num,7) = n;
 log(num,8) = pf;
-log(num,9) = R1m*abs(Im)^2;
-log(num,10) =R1a*abs(Ia)^2;
+log(num,9) = abs(Im);
+log(num,10) =abs(Ia);
 log(num,11) =R2*abs(Iin)^2;
 log(num,12) =Pc;
 end

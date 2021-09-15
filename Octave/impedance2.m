@@ -29,7 +29,9 @@ V0a = 213.7;
 C = 4*1e-6;
 %Vm = 220;
 PM = 14;
-
+Psa = 53.68;
+Isa = 0.8162;
+Vsa = 99.7;
 param = [R1m P0 V0 I0 Ps Is Vs R1a P0a I0a V0a C PM];
 X  = motorEstmate2(param);
 #{
@@ -43,7 +45,7 @@ disp( 'turn ratio')
 a = sqrt(X1a/X1m)
 disp( '----------------------')
 #}
-disp( '----------------------')
+disp( '-param,X,s,[V0 0]-')
 s = (1800-1774)/1800
 log = motorSim2(param,X,s,[V0 0],f);
 V0
@@ -52,15 +54,15 @@ Iin = log(4)
 P0
 Pin = log(6)
 pf = log(8)
-disp( '----------------------')
-log = motorSim2(param,X,1,[0 Vs],f);
+disp( '-param,X,1,[Vs 0]-')
+log = motorSim2(param,X,1,[Vs 0],f);
 Vs
 Is
 Iin = log(4)
 Ps
 Pin = log(6)
 pf = log(8)
-disp( '----------------------')
+disp( '--param,X,s,[0 V0a]--')
 s = (1800-1776)/1800
 log = motorSim2(param,X,s,[0 V0a],f);
 V0a
@@ -69,7 +71,16 @@ Iin = log(4)
 P0a
 Pin = log(6)
 pf = log(8)
-disp( '----------------------')
+disp( '-param,X,1,[0 Vsa]-')
+log = motorSim2(param,X,1,[0 Vsa],f);
+Vs
+Is
+Iin = log(4)
+Ps
+Pin = log(6)
+pf = log(8)
+
+
 log = motorSim(param,X,data,f);
 
 
@@ -159,12 +170,12 @@ set(h, "fontsize", 16);
 
 figure(3)
 
-plot(log(:,2),log(:,9),log(:,2),log(:,10),log(:,2),log(:,11),log(:,2),log(:,12))
+plot(log(:,2),log(:,9),log(:,2),log(:,10))
 %axis([0 1800 0 1.5]);
-legend('main copper loss','aux copper loss','rotor loss','Iron loss');
+legend('Imain','Iaux');
 xlabel ("Rpm");
-ylabel ("Power(W)");
-title('Loss-Rpm')
+ylabel ("Current(I)");
+title('Current-Rpm')
 grid on
 h=get(gcf, "currentaxes");
 set(h, "fontsize", 16);
