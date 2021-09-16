@@ -170,9 +170,9 @@ set(h, "fontsize", 16);
 
 figure(3)
 
-plot(log(:,2),log(:,9),log(:,2),log(:,10))
+plot(log(:,2),log(:,9:11))
 %axis([0 1800 0 1.5]);
-legend('Imain','Iaux');
+legend('Im','Ia','Iin');
 xlabel ("Rpm");
 ylabel ("Current(I)");
 title('Current-Rpm')

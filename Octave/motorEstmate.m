@@ -13,8 +13,14 @@ Isa = Param(10);
 Vsa = Param(11);
 C = Param(12);
 PM = Param(13)
+
+
+
+
+
 'Rotator resistance R2';
 R2 = Ps / Is^2 - R1m
+R2_=Psa/Is^2-R1m
 'main winding reactance X1m = X2 rotate winding recatance';
 
 %X1a = sqrt((Vsa/Isa)^2 -(R1a+R2a)^2)/2
@@ -31,6 +37,7 @@ Pc = P0 - Psl - Prl -PM
 Rc = Pc/I0^2
 X1m = sqrt((Vs/Is)^2 -(R1m+R2)^2)/2
 X2 = X1m 
+X1m_ = sqrt((Vs/Is)^2 -(R1m+R2_)^2)/2
 Xm = 2*(sqrt((V0/I0)^2 - (R1m+Rc+0.25*R2)^2) - X1m -0.5*X2)
 'main winding forward backward impedence';
 

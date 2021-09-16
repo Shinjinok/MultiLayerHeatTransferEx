@@ -32,11 +32,11 @@ pfe=data(:,8);
 
 R = 120*f/4;
 Xc = 1/(2*pi*f*C);
-w = 2*3.14*f;
+wsync = 2*3.14*R/60;
 for num = 1: length(data),
 s=(R-Rpme(num))/R;
 %s=(R-num)/R;
-ws = 2*3.14*Rpme(num)/60;
+w = 2*3.14*Rpme(num)/60;
 %ws = 2*3.14*num/60;
 Vm = Ve(num);
 %Vm = 120;
@@ -45,6 +45,10 @@ Z1m = R1m+j*X1m;
 Z1a = R1a+j*X1a;
 Zf  = 1/(1/(j*0.5*Xm) + 1/(0.5*R2/s+j*0.5*X2));
 Zb  = 1/(1/(j*0.5*Xm) + 1/(0.5*R2/(2-s)+j*0.5*X2));
+%Zf_ = j*0.5*Xm*(j*0.5*X2+0.5*R2/s)/(0.5*R2/s+j*0.5*(Xm+X2)) %checked upper equation same value
+%Zb_ = j*0.5*Xm*(j*0.5*X2+0.5*R2/(2-s))/(0.5*R2/(2-s)+j*0.5*(Xm+X2))
+
+
 Zc = -j*Xc;
 
 Z11 = Z1m+Zf+Zb;
@@ -56,9 +60,9 @@ Z_m = [Z11 Z12
        
 %input power
 Ima = inv(Z_m)*[Vm Va]';
-Im = Ima(1);
-Ia = Ima(2);
-Iin = Im + Ia +(Pc+PM)/Vm;
+Im = Ima(1)
+Ia = Ima(2)
+Iin = Im + Ia;% +(Pc+PM)/Vm;
 pf = real(Iin)/abs(Iin);
 Pin = Vm*abs(Iin)*pf;
 
@@ -72,8 +76,10 @@ Ef = Efm - j*Efa/a;
 Eb = Ebm + j*Eba/a;
 Pgf = real(Ef*conj(Im)+j*a*Ef*conj(Ia));
 Pgb = real(Eb*conj(Im)-j*a*Eb*conj(Ia));
-Pout = (Pgf-Pgb)*(1-s);
-Tq = Pout/ws;
+
+Tq = (Pgf-Pgb)/wsync;
+Pout = Tq*wsync*(1-s);
+
 %efficiency
 n = Pout/Pin;
 
@@ -90,7 +96,8 @@ log(num,7) = n;
 log(num,8) = pf;
 log(num,9) = abs(Im);
 log(num,10) =abs(Ia);
-log(num,11) =R2*abs(Iin)^2;
-log(num,12) =Pc;
+log(num,11) =abs(Iin);
+
+
 end
   endfunction
