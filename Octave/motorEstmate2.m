@@ -27,11 +27,11 @@ Prl = 0.25*R2*I0^2;
 'Machine loss';
 
 'Iron loss';
-Pc = P0 - Psl - Prl -PM
-Rc = Pc/I0^2
-X1m = sqrt((Vs/Is)^2 -(R1m+R2)^2)/2
-X2 = X1m 
-Xm = 2*(sqrt((V0/I0)^2 - (R1m+Rc+0.25*R2)^2) - X1m -0.5*X2)
+Pc = P0 - Psl - Prl -PM;
+Rc = Pc/I0^2;
+X1m = sqrt((Vs/Is)^2 -(R1m+R2)^2)/2;
+X2 = X1m ;
+Xm = 2*(sqrt((V0/I0)^2 - (R1m+Rc+0.25*R2)^2) - X1m -0.5*X2);
 'main winding forward backward impedence';
 
 X1a = X1m;

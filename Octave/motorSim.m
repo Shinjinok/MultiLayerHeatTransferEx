@@ -60,9 +60,17 @@ Z_m = [Z11 Z12
        
 %input power
 Ima = inv(Z_m)*[Vm Va]';
-Im = Ima(1)
-Ia = Ima(2)
-Iin = Im + Ia;% +(Pc+PM)/Vm;
+theta = -25/180*pi
+Rotm = [cos(theta) sin(theta)
+        -sin(theta) cos(theta)];
+
+%xm1 = Rotm*[real(Ima(1)) imag(Ima(1))]';
+%xm2 = Rotm*[real(Ima(2)) imag(Ima(2))]';
+%Im = xm1(1) + xm1(2)*j;
+%Ia = xm2(1) + xm2(2)*j;
+Im = Ima(1);
+Ia = Ima(2);
+Iin = Im + Ia +(Pc+PM)/Vm;
 pf = real(Iin)/abs(Iin);
 Pin = Vm*abs(Iin)*pf;
 
