@@ -1,4 +1,4 @@
-function estimated = motorEstmate(Param)
+function estimated = motorEstmate2(Param)
   %param = [R1m P0 V0 I0 Ps Is Vs R1a Psa Isa Vsa C PM];
 R1m = Param(1);
 P0 = Param(2);

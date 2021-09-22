@@ -72,31 +72,6 @@ X  = motorEstmate(param);
 %a = sqrt(X1a/X1m)
 
 
-disp( '----------------------')
-
-log = motorSim2(param,X,0,[V0 0],f);
-V0
-I0
-Iin = log(4)
-P0
-Pin = log(6)
-pf = log(8)
-
-log = motorSim2(param,X,1,[0 Vs],f);
-Vs
-Is
-Iin = log(4)
-Ps
-Pin = log(6)
-pf = log(8)
-log = motorSim2(param,X,1,[0 Vsa],f);
-Vsa
-Isa
-Iin = log(4)
-Psa
-Pin = log(6)
-pf = log(8)
-
 
 log = motorSim(param,X,data,f);
 
@@ -185,9 +160,9 @@ set(h, "fontsize", 16);
 
 figure(3)
 
-plot(log(:,2),log(:,9:10))
+plot(log(:,2),log(:,9:11))
 %axis([0 1800 0 1.5]);
-legend('Tgf','Tgb','auxre','auxim','zfbreal','zfbimg');
+legend('Im','Ia','Iin','auxim','zfbreal','zfbimg');
 xlabel ("Rpm");
 ylabel ("Current(I)");
 title('Current-Rpm')

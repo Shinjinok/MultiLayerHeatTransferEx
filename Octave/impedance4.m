@@ -19,21 +19,23 @@ data5 = [Te0 Rpme Ve Ie Poute Pine effa pfe];
 
 x0 = [0 0.1 0.2 0.3 0.4];
 y = [0.025 0.025 0.07 0.24 0.52];
-p = polyfit(x0,y,4);
+p = polyfit(x0,y,4)
 #{
 for i=1:length(x0),
   ye(i) = p*[x0(i)^4 x0(i)^3 x0(i)^2 x0(i) 1]'
 end
 #}
-dname1 = "experiment0917_2";
-dname2 = "experiment0917_3";
-dname3 = "experiment0917_4";
+dname1 = "ex0917_2";
+dname2 = "ex0917_3";
+dname3 = "ex0917_4";
 ldata1 = load("experiment0917_2.txt");
 ldata2 = load("experiment0917_3.txt");
 ldata3 = load("experiment0917_4.txt");
 f=60;
 
 
+
+%disp( 'Motor estimatied parameter')
 
 x = ldata1(:,1);
 Rpme=ldata1(:,2);
@@ -98,10 +100,10 @@ Psa = 53.68;
 Isa = 0.8162;
 Vsa = 99.7;
 param = [R1m P0 V0 I0 Ps Is Vs R1a P0a I0a V0a C PM Psa Isa Vsa];
-X  = motorEstmate3(param);
+X  = motorEstmate4(param,data1);
 %estimated = [R2 X1a X1m X2 Xm Pc];
 %X = [51 46 47 47 500 17];
-log = motorSim3(param,X,data1,f);
+log = motorSim4(param,X,data1,f);
 #{
 R0 = X(1)
 R2 = X(2)
@@ -157,8 +159,8 @@ subplot(2,3,1)
 plot(log(:,2),log(:,1),data1(:,2),data1(:,1),data2(:,2),data2(:,1),data3(:,2),data3(:,1),data5(:,2),data5(:,1))
 %axis([0 1800 0 1.5]);
 h=legend('simulation',dname1,dname2,dname3);
-legend (h, "location", "northwest");
-set (h, "fontsize", 16);
+legend (h, "location", "southwest");
+set (h, "fontsize", 12);
 xlabel ("Rpm");
 ylabel ("Torqe(Nm)");
 title('Torque-Rpm')
@@ -171,8 +173,8 @@ subplot(2,3,2)
 plot(log(:,2),log(:,4),data1(:,2),data1(:,4),data2(:,2),data2(:,4),data3(:,2),data3(:,4),data5(:,2),data5(:,4))
 %axis([0 1800 0 2]);
 h=legend('simulation',dname1,dname2,dname3);
-%legend (h, "location", "northwest");
-set (h, "fontsize", 16);
+legend (h, "location", "southwest");
+set (h, "fontsize", 12);
 xlabel ("Rpm");
 ylabel ("Current(A)");
 title('Current-Rpm')
@@ -184,8 +186,8 @@ subplot(2,3,3)
 plot(log(:,2),log(:,8),data1(:,2),data1(:,8),data2(:,2),data2(:,8),data3(:,2),data3(:,8),data5(:,2),data5(:,8))
 grid on
 h=legend('simulation',dname1,dname2,dname3);
-%legend (h, "location", "northwest");
-set (h, "fontsize", 16);
+legend (h, "location", "southwest");
+set (h, "fontsize", 12);
 axis([0 1800 0 1.5]);
 xlabel ("Rpm");
 ylabel ("Power Factor");
@@ -197,8 +199,8 @@ subplot(2,3,4)
 plot(log(:,2),log(:,6),data1(:,2),data1(:,6),data2(:,2),data2(:,6),data3(:,2),data3(:,6),data5(:,2),data5(:,6))
 axis([0 1800 0 400]);
 h=legend('simulation',dname1,dname2,dname3);
-%legend (h, "location", "northwest");
-set (h, "fontsize", 16);
+legend (h, "location", "southwest");
+set (h, "fontsize", 12);
 xlabel ("Rpm");
 ylabel ("Input Power(W)");
 title('Input Power-Rpm')
@@ -211,8 +213,8 @@ subplot(2,3,5)
 plot(log(:,2),log(:,5),data1(:,2),data1(:,5),data2(:,2),data2(:,5),data3(:,2),data3(:,5),data5(:,2),data5(:,5))
 %axis([0 1800 0 200]);
 h=legend('simulation',dname1,dname2,dname3);
-%legend (h, "location", "northwest");
-set (h, "fontsize", 16);
+legend (h, "location", "northwest");
+set (h, "fontsize", 12);
 xlabel ("Rpm");
 ylabel ("Output Power(W)");
 title('Output Power-Rpm')
@@ -225,8 +227,8 @@ subplot(2,3,6)
 plot(log(:,2),log(:,7),data1(:,2),data1(:,7),data2(:,2),data2(:,7),data3(:,2),data3(:,7),data5(:,2),data5(:,7))
 %axis([0 1800 0 1]);
 h=legend('simulation',dname1,dname2,dname3);
-%legend (h, "location", "northwest");
-set (h, "fontsize", 16);
+legend (h, "location", "northwest");
+set (h, "fontsize", 12);
 xlabel ("Rpm");
 ylabel ("Efficiency");
 title('Efficiency-Rpm')

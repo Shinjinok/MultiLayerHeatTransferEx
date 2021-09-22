@@ -18,6 +18,7 @@ X1a = X(2);
 X1m = X(3);
 X2 = X(4);
 Xm = X(5);
+Pc = X(6);
 a = sqrt(X1a/X1m);
 
 
@@ -44,7 +45,7 @@ Ima = inv(Z_m)*v';
 Im = Ima(1)
 Ia = Ima(2)
 
-Iin = Im + Ia;% + (Pc+PM)/Vm;
+Iin = Im + Ia+ (Pc+PM)/Vm;
 pf = real(Iin)/abs(Iin);
 Pin = norm(v)*abs(Iin)*pf;
 
