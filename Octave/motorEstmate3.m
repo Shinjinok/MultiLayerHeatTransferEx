@@ -59,18 +59,20 @@ z0_re = R1m + r2/4;
 z0_im = x1m + xm/2 + x2/2;
 z0a_re = R1a + r2/4;
 z0a_im = x1a + xm/2 + x2/2;
-%zs_re = R1m + r2;
-%zs_im = x1m + x2;
-%zsa_re = R1a + r2;
-%zsa_im = x1a + x2;
 
+zs_re = R1m + r2;
+zs_im = x1m + x2;
+zsa_re = R1a + r2;
+zsa_im = x1a + x2;
 
+#{
 zs_re = R1m +  xm^2*r2/(r2^2+(x2+xm)^2);
 zs_im = x1m +  (xm*x2*(x2+xm)+ xm*r2^2)/(r2^2+(x2+xm)^2);
 zsa_re = R1a + xm^2*r2/(r2^2+(x2+xm)^2);
 zsa_im = x1a + (xm*x2*(x2+xm)+ xm*r2^2)/(r2^2+(x2+xm)^2);
+#}
 f1 = x1m - x2;
-f2 = (V0a/I0a) - sqrt(z0a_re^2 + z0a_im^2);
+f2 = (V0a/I0a) -sqrt(z0a_re^2 + z0a_im^2);
 f3 = (V0/I0) - sqrt(z0_re^2 + z0_im^2);
 f4 = (P0-PM-Pc)/I0^2 - z0_re;
 f5 = (P0a-PM-Pc)/I0a^2 - z0a_re;
@@ -104,7 +106,10 @@ X1a = X(2);
 X1m = X(3);
 X2 =  X(4);
 Xm =  X(5);
-Pc;
+Prl = 0.25*R2*I0^2;
+Prla = 0.25*R2a*I0a^2;
+Prl = (Prl+Prla)/2;
+Pc = P0 - Psl - Prl -PM;
 
 figure(100)
 plot(log)

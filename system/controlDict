@@ -23,7 +23,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         5;
+endTime         2;
 
 deltaT          1e-4;
 
@@ -33,7 +33,7 @@ writeInterval   1;
 
 purgeWrite      0;
 
-writeFormat     binary;
+//writeFormat     binary;
 
 writePrecision  6;
 
@@ -56,22 +56,47 @@ adjustTimeStep  yes;
 
 functions
 {
-    probes
+    probes_coil
     {
         type        probes;
-        name        probes;
-        functionObjectLibs  ("libsampling.so");
-        writeControl timeStep;
+   //     name        coil;
+        libs  ("libsampling.so");
+        writeControl outputTime;
         writeInterval 1;
         region coil;
+        fields ( T );
         probeLocations
         (
-          (0 -27e-3 35e-3)
-        );
-
-        fields
-        (
-              T
+          (0.014 -0.035 0.032)//coil
         );
     }
+    probes_stator
+    {
+        type        probes;
+     //   name        stator;
+        libs  ("libsampling.so");
+        writeControl outputTime;
+        writeInterval 1;
+        region stator;
+        fields ( T );
+        probeLocations
+        (
+          (0.015 -0.017 0.040)//stator
+        );
+    }
+    probes_case
+    {
+        type        probes;
+     //   name        case;
+        libs  ("libsampling.so");
+        writeControl outputTime;
+        writeInterval 1;
+        region case;
+        fields ( T );
+        probeLocations
+        (
+          (0.023  0.048 0.045)//case
+        );
+    }
+           
 }

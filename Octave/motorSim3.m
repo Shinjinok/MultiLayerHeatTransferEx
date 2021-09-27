@@ -33,12 +33,12 @@ pfe=data(:,8);
 R = 120*f/4;
 Xc = 1/(2*pi*f*C);
 wsync = 2*3.14*R/60;
-for num = 1: 1800,%length(data),
-%s=(R-Rpme(num))/R;
-s=(R-num)/R;
-%w = 2*3.14*Rpme(num)/60;
-ws = 2*3.14*num/60;
-Vm = 220;%Ve(num);
+for num = 1:length(data),
+s=(R-Rpme(num))/R;
+%s=(R-num)/R;
+ws = 2*3.14*Rpme(num)/60;
+%ws = 2*3.14*num/60;
+Vm = Ve(num);
 Va = Vm;
 Z1m = R1m+j*X1m;
 Z1a = R1a+j*X1a;
@@ -61,7 +61,7 @@ Z_m = [Z11 Z12
 Ima = inv(Z_m)*[Vm Va]';
 Im = Ima(1);
 Ia = Ima(2);
-Iin = Im + Ia +(Pc+PM)/Vm;
+Iin = Im + Ia+(Pc+PM)/Vm;
 pf = real(Iin)/abs(Iin);
 %Pin = Vm*abs(Iin)*pf;
 Pin = Vm*real(Iin);
@@ -106,18 +106,18 @@ n = Pout/Pin;
 %log
 
 log(num,1) = Tq;
-%log(num,2) = Rpme(num);
-log(num,2) = num;
+log(num,2) = Rpme(num);
+%log(num,2) = num;
 log(num,3) = Vm;
 log(num,4) = abs(Iin);
 log(num,5) = Pout;
 log(num,6) = Pin;
 log(num,7) = n;
 log(num,8) = pf;
-log(num,9) = real(Im);
-log(num,10) =imag(Im);
-log(num,11) =real(Ia);
-log(num,12) =imag(Ia);
+log(num,9) = R1m*abs(Im)^2+R1a*abs(Ia)^2;
+log(num,10) =R2*abs(Iin)^2;
+log(num,11) = Pc;
+log(num,12) = PM;
 
 end
   endfunction

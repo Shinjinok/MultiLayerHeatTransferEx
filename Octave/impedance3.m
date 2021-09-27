@@ -2,7 +2,7 @@ pkg load symbolic
 clear; clc; close all;
 
 dname = "220V150W60HzN";
-data1 = load("220V_150W_60Hz_N.txt");
+data1 = load("220V_150W_60Hz.txt");
 f=60;
 
 Te0=data1(:,1)*1e-3;
@@ -25,9 +25,9 @@ for i=1:length(x0),
   ye(i) = p*[x0(i)^4 x0(i)^3 x0(i)^2 x0(i) 1]'
 end
 #}
-dname1 = "experiment0917_2";
-dname2 = "experiment0917_3";
-dname3 = "experiment0917_4";
+dname1 = "ex_2";
+dname2 = "ex_3";
+dname3 = "ex_4";
 ldata1 = load("experiment0917_2.txt");
 ldata2 = load("experiment0917_3.txt");
 ldata3 = load("experiment0917_4.txt");
@@ -80,7 +80,7 @@ data3 = [Te' Rpme Ve Ie Poute Pine effa pfe];
 
 
 
-
+#{
 R1m = 41.67;
 P0 = 76.81;
 V0 = 215.2;
@@ -97,11 +97,48 @@ PM = 14;
 Psa = 53.68;
 Isa = 0.8162;
 Vsa = 99.7;
+#}
+
+R1m = 41.67;
+#{
+V0 = 215.96;
+I0 = 0.9309;
+P0 = V0*I0*0.3893;
+Vs = 216.9;
+Is = 2.233;
+Ps = Vs*Is*0.87;
+R1a = 41.59;
+V0a = 215.78;
+I0a = 0.938;
+P0a = V0a*I0a*0.39;
+Vsa = 216.4;
+Isa = 2.25;
+Psa = Vsa*Isa*0.879;
+C = 4*1e-6;
+PM = 14;
+#}
+R1m = 41.67;
+V0 = 215.96;
+I0 = 0.9309;
+P0 = V0*I0*0.3893
+Vs = 210;
+Is = 2.06;
+Ps = Vs*Is*0.868
+R1a = 41.59;
+V0a = 215.78;
+I0a = 0.938
+P0a = V0a*I0a*0.39
+Vsa = 211;
+Isa = 2.074;
+Psa = Vsa*Isa*0.877
+C = 4*1e-6;
+PM = 14;
+
 param = [R1m P0 V0 I0 Ps Is Vs R1a P0a I0a V0a C PM Psa Isa Vsa];
 X  = motorEstmate3(param);
 %estimated = [R2 X1a X1m X2 Xm Pc];
 %X = [51 46 47 47 500 17];
-log = motorSim3(param,X,data1,f);
+log = motorSim3(param,X,data5,f);
 #{
 R0 = X(1)
 R2 = X(2)
@@ -156,9 +193,9 @@ figure(2)
 subplot(2,3,1)
 plot(log(:,2),log(:,1),data1(:,2),data1(:,1),data2(:,2),data2(:,1),data3(:,2),data3(:,1),data5(:,2),data5(:,1))
 %axis([0 1800 0 1.5]);
-h=legend('simulation',dname1,dname2,dname3);
+h=legend('simulation',dname1,dname2,dname3,dname);
 legend (h, "location", "northwest");
-set (h, "fontsize", 16);
+set (h, "fontsize", 10);
 xlabel ("Rpm");
 ylabel ("Torqe(Nm)");
 title('Torque-Rpm')
@@ -170,9 +207,9 @@ set(h, "fontsize", 16);
 subplot(2,3,2)
 plot(log(:,2),log(:,4),data1(:,2),data1(:,4),data2(:,2),data2(:,4),data3(:,2),data3(:,4),data5(:,2),data5(:,4))
 %axis([0 1800 0 2]);
-h=legend('simulation',dname1,dname2,dname3);
-%legend (h, "location", "northwest");
-set (h, "fontsize", 16);
+h=legend('simulation',dname1,dname2,dname3,dname);
+legend (h, "location", "southwest");
+set (h, "fontsize", 10);
 xlabel ("Rpm");
 ylabel ("Current(A)");
 title('Current-Rpm')
@@ -183,9 +220,9 @@ set(h, "fontsize", 16);
 subplot(2,3,3)
 plot(log(:,2),log(:,8),data1(:,2),data1(:,8),data2(:,2),data2(:,8),data3(:,2),data3(:,8),data5(:,2),data5(:,8))
 grid on
-h=legend('simulation',dname1,dname2,dname3);
-%legend (h, "location", "northwest");
-set (h, "fontsize", 16);
+h=legend('simulation',dname1,dname2,dname3,dname);
+legend (h, "location", "southwest");
+set (h, "fontsize", 10);
 axis([0 1800 0 1.5]);
 xlabel ("Rpm");
 ylabel ("Power Factor");
@@ -195,10 +232,10 @@ set(h, "fontsize", 16);
 %figure(3)
 subplot(2,3,4)
 plot(log(:,2),log(:,6),data1(:,2),data1(:,6),data2(:,2),data2(:,6),data3(:,2),data3(:,6),data5(:,2),data5(:,6))
-axis([0 1800 0 400]);
-h=legend('simulation',dname1,dname2,dname3);
-%legend (h, "location", "northwest");
-set (h, "fontsize", 16);
+%axis([0 1800 0 400]);
+h=legend('simulation',dname1,dname2,dname3,dname);
+legend (h, "location", "southwest");
+set (h, "fontsize", 10);
 xlabel ("Rpm");
 ylabel ("Input Power(W)");
 title('Input Power-Rpm')
@@ -210,9 +247,9 @@ set(h, "fontsize", 16);
 subplot(2,3,5)
 plot(log(:,2),log(:,5),data1(:,2),data1(:,5),data2(:,2),data2(:,5),data3(:,2),data3(:,5),data5(:,2),data5(:,5))
 %axis([0 1800 0 200]);
-h=legend('simulation',dname1,dname2,dname3);
-%legend (h, "location", "northwest");
-set (h, "fontsize", 16);
+h=legend('simulation',dname1,dname2,dname3,dname);
+legend (h, "location", "northwest");
+set (h, "fontsize", 10);
 xlabel ("Rpm");
 ylabel ("Output Power(W)");
 title('Output Power-Rpm')
@@ -224,9 +261,9 @@ set(h, "fontsize", 16);
 subplot(2,3,6)
 plot(log(:,2),log(:,7),data1(:,2),data1(:,7),data2(:,2),data2(:,7),data3(:,2),data3(:,7),data5(:,2),data5(:,7))
 %axis([0 1800 0 1]);
-h=legend('simulation',dname1,dname2,dname3);
-%legend (h, "location", "northwest");
-set (h, "fontsize", 16);
+h=legend('simulation',dname1,dname2,dname3,dname);
+legend (h, "location", "northwest");
+set (h, "fontsize", 10);
 xlabel ("Rpm");
 ylabel ("Efficiency");
 title('Efficiency-Rpm')
@@ -241,16 +278,37 @@ figure(3)
 plot(log(:,2),log(:,9:12))
 %axis([0 1800 0 1.5]);
 
-h=legend('Im_re','Im_im','Ia_re','Ia_im');
+h=legend('Stator CL','Rotor CL','Iron L','Machine L');
 legend (h, "location", "northwest");
 set (h, "fontsize", 16);
 xlabel ("Rpm");
-ylabel ("Current(I)");
-title('Current-Rpm')
+ylabel ("Loss(Watt)");
+title('Loss-Rpm')
 grid on
 h=get(gcf, "currentaxes");
 set(h, "fontsize", 16);
 #set (h, "xdir", "reverse")
 
+fname = "loss.txt";
+fid = fopen(fname,"w");
+fprintf(fid, "RPM   SCL    RCL     PC    PM\n");
+for i=1:length(log),
+  fprintf(fid,"%4.1f    %4.1f   %4.1f   %4.1f   %4.1f\n",log(i,2),log(i,9:12));
+end
+fclose(fid);
+
+coil_pai = 0.35;
+coil_turn = 190;
+one_trurn = 400;
+coil_v = (coil_pai/2)^2*3.14*coil_turn*one_trurn*1e-9
+coil_volume = 126020*1e-9
+rotor_volume = 139555*1e-9
+stator_volume = 133282*1e-9
+coil_watt = log(7,9)
+rotor_watt = log(7,10)
+stator_watt = log(7,11)
+coil_loss = log(7,9)/coil_v/8
+rotor_loss = log(7,10)/rotor_volume
+stator_loss = log(7,11)/stator_volume
 
 
