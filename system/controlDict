@@ -23,13 +23,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         2;
+endTime         1800;
 
 deltaT          1e-4;
 
 writeControl    adjustableRunTime;
 
-writeInterval   1;
+writeInterval   20;
 
 purgeWrite      0;
 
@@ -45,7 +45,7 @@ timePrecision   6;
 
 runTimeModifiable true;
 
-maxCo           1.0;
+//maxCo           1.0;
 
 //maxDi           10.0;
 
@@ -62,7 +62,7 @@ functions
    //     name        coil;
         libs  ("libsampling.so");
         writeControl outputTime;
-        writeInterval 1;
+        writeInterval 20;
         region coil;
         fields ( T );
         probeLocations
@@ -76,7 +76,7 @@ functions
      //   name        stator;
         libs  ("libsampling.so");
         writeControl outputTime;
-        writeInterval 1;
+        writeInterval 20;
         region stator;
         fields ( T );
         probeLocations
@@ -90,7 +90,7 @@ functions
      //   name        case;
         libs  ("libsampling.so");
         writeControl outputTime;
-        writeInterval 1;
+        writeInterval 20;
         region case;
         fields ( T );
         probeLocations
