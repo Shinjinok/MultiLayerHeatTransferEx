@@ -1,0 +1,41 @@
+Solid Edge로 STEP 변환
+날짜: 목요일,10월 28,2021 05:40오후
+원본 파일: C:\GitHubDeskTop\MultiLayerHeatTransferEx\salomeFile\motor.step
+작성자: Author
+조직: Open CASCADE
+원본 시스템: Open CASCADE 7.5
+
+하드웨어:
+프로세서: Intel(R) Core(TM) i7-7820X CPU @ 3.60GHz
+운영 체제: Windows 10 Professional
+설치된 메모리: 15.70 GB
+
+소프트웨어 정보
+Parasolid 버전: 33.0.247
+PSBodyShop 버전: 33.0.93
+단계 어댑터 버전: 5.0.107
+Solid Edge 버전: 221.00.04.003 x64
+
+STEP 가져오기 옵션
+파셋 바디 가져오기: 켜짐
+체크 바디 가져오기: 꺼짐
+곡선 가져오기: 켜짐
+DoNotSave 가져오기: 켜짐
+여러 개의 바디를 단일 파트 파일로 가져오기: 켜짐
+스티칭 곡면 가져오기: 켜짐
+부울 솔리드 가져오기: 켜짐
+베이스 형상 만들기: 켜짐
+지오메트리 단순화: 켜짐
+각인 곡선 가져오기: 켜짐
+드라이브 가져오기: C:
+스티칭 곡면 가져오기: 켜짐
+곡면 가져오기: 켜짐
+출력 경로 가져오기: C:\GitHubDeskTop\MultiLayerHeatTransferEx\salomeFile
+기본 출력 경로 활성화 가져오기: 켜짐
+PMI 가져오기: 꺼짐
+내부 컴포넌트로 가져오기: 꺼짐
+경로 가져오기: 
+
+Parasolid 데이터 유형으로 변환하는 중...
+변환 작업을 완료했습니다.
+변환 및 사후 처리에 필요한 총 시간:00 : 00 : 03

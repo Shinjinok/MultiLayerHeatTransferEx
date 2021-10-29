@@ -30,7 +30,7 @@ options
         {
             e
             {
-                explicit    1e6; // W/m^3 == kg/m/s^3
+                explicit    7e5; // W/m^3 == kg/m/s^3
                 implicit    0;
             }
         }
