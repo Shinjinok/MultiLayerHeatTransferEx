@@ -28,7 +28,7 @@ thermoType
 
 mixture
 {
-    // insulating paper
+    // insulating paper[reference ISSN 1975-8359/2287-4364]
 
     specie
     {
@@ -36,16 +36,16 @@ mixture
     }
     equationOfState
     {
-        rho             1201;
+        rho             1130;//[kg/m3]
     }
     transport
     {
-        kappa           50;
+        kappa           0.242;//
     }
     thermodynamics
     {
         Hf              0;
-        Cv              910;
+        Cv              2500;//Polyamide(insulating paper)[J/kg K]
     }
 
     
