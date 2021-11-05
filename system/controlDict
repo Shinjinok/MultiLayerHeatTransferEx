@@ -23,7 +23,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         1800;
+endTime         1000;
 
 deltaT          1e-4;
 
@@ -62,12 +62,12 @@ functions
    //     name        coil;
         libs  ("libsampling.so");
         writeControl outputTime;
-        writeInterval 20;
+        writeInterval 1;
         region coil;
         fields ( T );
         probeLocations
         (
-          (0.014 -0.035 0.032)//coil
+          (0.005 -0.036 0.033)//coil
         );
     }
     probes_stator
@@ -76,12 +76,12 @@ functions
      //   name        stator;
         libs  ("libsampling.so");
         writeControl outputTime;
-        writeInterval 20;
+        writeInterval 1;
         region stator;
         fields ( T );
         probeLocations
         (
-          (0.015 -0.017 0.040)//stator
+          (0.005 -0.019 0.044)//stator
         );
     }
     probes_case
@@ -90,12 +90,12 @@ functions
      //   name        case;
         libs  ("libsampling.so");
         writeControl outputTime;
-        writeInterval 20;
+        writeInterval 1;
         region case;
         fields ( T );
         probeLocations
         (
-          (0.023  0.048 0.045)//case
+          (0.005  0.048 0.051)//case
         );
     }
            

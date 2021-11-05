@@ -1,0 +1,54 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant/grease";
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+thermoType
+{
+    type            heSolidThermo;
+    mixture         pureMixture;
+    transport       constIso;
+    thermo          eConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+mixture
+{
+    // insulating paper[reference ISSN 1975-8359/2287-4364]
+
+    specie
+    {
+        molWeight       62.5;
+    }
+    equationOfState
+    {
+        rho             1130;//[kg/m3]
+    }
+    transport
+    {
+        kappa           0.242;//
+    }
+    thermodynamics
+    {
+        Hf              0;
+        Cv              2500;//Polyamide(insulating paper)[J/kg K]
+    }
+
+    
+}
+
+// ************************************************************************* //

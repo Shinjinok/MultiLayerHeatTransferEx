@@ -16,8 +16,8 @@ h=get(gcf, "currentaxes");
 set(h, "fontsize", 16);
 
 subplot(1,3,2)
-plot(data1(1:100,2:4))
-axis([0 100 30 60]);
+plot(data1(1:1000,2:4))
+%axis([0 120 30 50]);
 h=legend('coil','stator','case');
 legend (h, "location", "northwest");
 set (h, "fontsize", 10);
@@ -28,10 +28,11 @@ grid on
 h=get(gcf, "currentaxes");
 set(h, "fontsize", 16);
 dname = "coil";
-data1 = load("T_coil5");
-data3 = load("T_case5");
-data2 = load("T_stator5");
-subplot(1,3,3)
+data1 = load("T_coil11");
+data3 = load("T_case11");
+data2 = load("T_stator11");
+%subplot(1,3,3)
+hold on
 plot(data1(:,1),data1(:,2)-273,data2(:,1),data2(:,2)-273,data3(:,1),data3(:,2)-273)
 %axis([0 100 30 60]);
 h=legend('coil','stator','case','ambient');
