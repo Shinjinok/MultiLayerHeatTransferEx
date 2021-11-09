@@ -40,7 +40,7 @@ mixture
     }
     transport
     {
-        kappa           0.242;//
+        kappa           1;//0.242;//
     }
     thermodynamics
     {

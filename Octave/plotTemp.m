@@ -31,10 +31,16 @@ dname = "coil";
 data1 = load("T_coil11");
 data3 = load("T_case11");
 data2 = load("T_stator11");
-%subplot(1,3,3)
+
 hold on
 plot(data1(:,1),data1(:,2)-273,data2(:,1),data2(:,2)-273,data3(:,1),data3(:,2)-273)
-%axis([0 100 30 60]);
+subplot(1,3,3)
+data1 = load("T_coil12");
+data3 = load("T_case12");
+data2 = load("T_stator12");
+hold on
+plot(data1(:,1),data1(:,2)-273,data2(:,1),data2(:,2)-273,data3(:,1),data3(:,2)-273)
+axis([0 1000 30 80]);
 h=legend('coil','stator','case','ambient');
 legend (h, "location", "northwest");
 set (h, "fontsize", 10);
